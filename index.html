@@ -60,7 +60,15 @@
     .tag.genre { background: #f3e5f5; color: #6a1b9a; }
     @media (max-width: 700px) {
       header, .controls, .table-wrap { padding-left: 14px; padding-right: 14px; }
-      td.link-cell { display: none; }
+      td.station-cell, th:nth-child(3) { display: none; }
+      td.link-cell a {
+        display: inline-block;
+        max-width: 180px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        vertical-align: bottom;
+      }
     }
   </style>
 </head>
@@ -130,7 +138,7 @@
     <table id="mainTable">
       <thead>
         <tr>
-          <th></th>
+          <th>送った人</th>
           <th>店名</th>
           <th>最寄り駅</th>
           <th>ジャンル</th>
