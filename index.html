@@ -8,84 +8,59 @@
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
       font-family: "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Noto Sans JP", sans-serif;
-      background: #faf9f7;
-      color: #333;
-      min-height: 100vh;
+      background: #faf9f7; color: #333; min-height: 100vh;
     }
     header {
-      background: #fff;
-      border-bottom: 2px solid #f0ede8;
-      padding: 20px 28px;
-      position: sticky;
-      top: 0;
-      z-index: 10;
+      background: #fff; border-bottom: 2px solid #f0ede8;
+      padding: 20px 28px; position: sticky; top: 0; z-index: 10;
       box-shadow: 0 1px 8px rgba(0,0,0,.06);
     }
     header h1 { font-size: 1.3rem; font-weight: 700; color: #c0392b; letter-spacing: .05em; }
     header p { font-size: .78rem; color: #aaa; margin-top: 2px; }
     .controls {
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
-      padding: 16px 28px 0;
-      align-items: center;
+      display: flex; gap: 10px; flex-wrap: wrap;
+      padding: 16px 28px 0; align-items: center;
     }
     .controls label { font-size: .8rem; color: #666; white-space: nowrap; }
     .controls select, .controls input {
-      border: 1px solid #ddd;
-      border-radius: 6px;
-      padding: 5px 8px;
-      font-size: .82rem;
-      background: #fff;
-      outline: none;
+      border: 1px solid #ddd; border-radius: 6px; padding: 5px 8px;
+      font-size: .82rem; background: #fff; outline: none;
     }
     .controls select:focus, .controls input:focus { border-color: #c0392b; }
     .count { font-size: .8rem; color: #aaa; margin-left: auto; }
-    .table-wrap {
-      padding: 14px 28px 48px;
-      overflow-x: auto;
-    }
+    .table-wrap { padding: 14px 28px 48px; overflow-x: auto; }
     table {
-      width: 100%;
-      border-collapse: collapse;
-      background: #fff;
-      border-radius: 10px;
-      overflow: hidden;
-      box-shadow: 0 1px 6px rgba(0,0,0,.07);
-      font-size: .84rem;
+      width: 100%; border-collapse: collapse; background: #fff;
+      border-radius: 10px; overflow: hidden;
+      box-shadow: 0 1px 6px rgba(0,0,0,.07); font-size: .84rem;
     }
     thead tr { background: #2c2c2c; color: #fff; }
-    thead th { padding: 11px 12px; text-align: left; font-weight: 600; font-size: .76rem; letter-spacing: .04em; white-space: nowrap; }
+    thead th {
+      padding: 11px 12px; text-align: left; font-weight: 600;
+      font-size: .76rem; letter-spacing: .04em; white-space: nowrap;
+    }
     tbody tr { border-bottom: 1px solid #f0ede8; transition: background .12s; }
     tbody tr:last-child { border-bottom: none; }
     tbody tr:hover { background: #fdf6f5; }
     tbody tr.hidden { display: none; }
     td { padding: 9px 12px; vertical-align: middle; }
-    td.date { white-space: nowrap; color: #999; font-size: .76rem; font-variant-numeric: tabular-nums; }
     td.name-cell { font-size: .82rem; max-width: 180px; }
     td.station-cell { font-size: .78rem; color: #555; white-space: nowrap; }
     td.link-cell a {
-      color: #c0392b;
-      text-decoration: none;
-      font-size: .75rem;
-      word-break: break-all;
+      color: #c0392b; text-decoration: none;
+      font-size: .75rem; word-break: break-all;
     }
     td.link-cell a:hover { text-decoration: underline; }
     .tag {
-      display: inline-block;
-      padding: 2px 8px;
-      border-radius: 20px;
-      font-size: .7rem;
-      font-weight: 600;
-      white-space: nowrap;
+      display: inline-block; padding: 2px 8px; border-radius: 20px;
+      font-size: .7rem; font-weight: 600; white-space: nowrap;
     }
-    .tag.sender.airi { background: #fce4ec; color: #c2185b; }
+    .tag.sender.airi  { background: #fce4ec; color: #c2185b; }
     .tag.sender.kohei { background: #e3f2fd; color: #1565c0; }
     .tag.genre { background: #f3e5f5; color: #6a1b9a; }
     @media (max-width: 700px) {
       header, .controls, .table-wrap { padding-left: 14px; padding-right: 14px; }
       td.link-cell { display: none; }
-      td.date { font-size: .7rem; }
     }
   </style>
 </head>
@@ -94,7 +69,6 @@
     <h1>🍜 食事リンク集</h1>
     <p>LINEのトークから抽出した食事関連リンク</p>
   </header>
-
   <div class="controls">
     <label>送った人：
       <select id="filterSender">
@@ -150,14 +124,12 @@
     <label>検索：
       <input type="text" id="search" placeholder="店名・駅名…">
     </label>
-    <span class="count" id="count">171 件</span>
+    <span class="count" id="count">154 件</span>
   </div>
-
   <div class="table-wrap">
     <table id="mainTable">
       <thead>
         <tr>
-          <th>日付</th>
           <th></th>
           <th>店名</th>
           <th>最寄り駅</th>
@@ -166,1368 +138,1078 @@
         </tr>
       </thead>
       <tbody>
-<tr data-sender="AiriToumei" data-genre="" data-type="Googleマップ">
-  <td class="date">2024/10/21</td>
+<tr data-sender="AiriToumei" data-genre="">
   <td><span class="tag sender airi">A</span></td>
   <td class="name-cell"></td>
   <td class="station-cell"></td>
   <td></td>
   <td class="link-cell"><a href="https://g.co/kgs/EMDwo8Q" target="_blank" rel="noopener">https://g.co/kgs/EMDwo8Q</a></td>
 </tr>
-<tr data-sender="AiriToumei" data-genre="" data-type="Googleマップ">
-  <td class="date">2024/10/21</td>
+<tr data-sender="AiriToumei" data-genre="">
   <td><span class="tag sender airi">A</span></td>
   <td class="name-cell"></td>
   <td class="station-cell"></td>
   <td></td>
   <td class="link-cell"><a href="https://g.co/kgs/zopY8vz" target="_blank" rel="noopener">https://g.co/kgs/zopY8vz</a></td>
 </tr>
-<tr data-sender="AiriToumei" data-genre="そば" data-type="食べログ">
-  <td class="date">2024/10/21</td>
+<tr data-sender="AiriToumei" data-genre="そば">
   <td><span class="tag sender airi">A</span></td>
-  <td class="name-cell">向島七福すずめの御宿のご予約</td>
+  <td class="name-cell">向島七福すずめの御宿のご予約 - とうきょうスカイツリー</td>
   <td class="station-cell">とうきょうスカイツリー駅</td>
   <td><span class="tag genre">そば</span></td>
   <td class="link-cell"><a href="https://s.tabelog.com/tokyo/A1312/A131203/13120269/" target="_blank" rel="noopener">https://s.tabelog.com/tokyo/A1312/A131203/13120269/</a></td>
 </tr>
-<tr data-sender="AiriToumei" data-genre="" data-type="Googleマップ">
-  <td class="date">2024/10/21</td>
+<tr data-sender="AiriToumei" data-genre="">
   <td><span class="tag sender airi">A</span></td>
   <td class="name-cell"></td>
   <td class="station-cell"></td>
   <td></td>
   <td class="link-cell"><a href="https://g.co/kgs/tDZBZQV" target="_blank" rel="noopener">https://g.co/kgs/tDZBZQV</a></td>
 </tr>
-<tr data-sender="AiriToumei" data-genre="スペイン料理" data-type="食べログ">
-  <td class="date">2024/11/16</td>
+<tr data-sender="AiriToumei" data-genre="スペイン料理">
   <td><span class="tag sender airi">A</span></td>
-  <td class="name-cell">アルハムブラ</td>
+  <td class="name-cell">アルハムブラ - 西日暮里</td>
   <td class="station-cell">西日暮里駅</td>
   <td><span class="tag genre">スペイン料理</span></td>
   <td class="link-cell"><a href="https://s.tabelog.com/tokyo/A1311/A131105/13018600/" target="_blank" rel="noopener">https://s.tabelog.com/tokyo/A1311/A131105/13018600/</a></td>
 </tr>
-<tr data-sender="AiriToumei" data-genre="アジア料理" data-type="食べログ">
-  <td class="date">2024/12/10</td>
+<tr data-sender="AiriToumei" data-genre="アジア料理">
   <td><span class="tag sender airi">A</span></td>
-  <td class="name-cell">ARALE</td>
+  <td class="name-cell">ARALE - 渋谷</td>
   <td class="station-cell">渋谷駅</td>
   <td><span class="tag genre">アジア料理</span></td>
   <td class="link-cell"><a href="https://s.tabelog.com/tokyo/A1303/A130301/13237344/" target="_blank" rel="noopener">https://s.tabelog.com/tokyo/A1303/A130301/13237344/</a></td>
 </tr>
-<tr data-sender="AiriToumei" data-genre="居酒屋" data-type="食べログ">
-  <td class="date">2024/12/10</td>
+<tr data-sender="AiriToumei" data-genre="居酒屋">
   <td><span class="tag sender airi">A</span></td>
   <td class="name-cell">茶茶 花</td>
   <td class="station-cell">東新宿駅</td>
   <td><span class="tag genre">居酒屋</span></td>
   <td class="link-cell"><a href="https://s.tabelog.com/tokyo/A1304/A130401/13004164/" target="_blank" rel="noopener">https://s.tabelog.com/tokyo/A1304/A130401/13004164/</a></td>
 </tr>
-<tr data-sender="Kohei Takagi" data-genre="ロシア料理" data-type="食べログ">
-  <td class="date">2024/12/13</td>
+<tr data-sender="Kohei Takagi" data-genre="ロシア料理">
   <td><span class="tag sender kohei">K</span></td>
-  <td class="name-cell">スンガリー 新宿東口本店のご予約</td>
+  <td class="name-cell">スンガリー 新宿東口本店のご予約 - 西武新宿</td>
   <td class="station-cell">西武新宿駅</td>
   <td><span class="tag genre">ロシア料理</span></td>
   <td class="link-cell"><a href="https://tabelog.com/tokyo/A1304/A130401/13000120/" target="_blank" rel="noopener">https://tabelog.com/tokyo/A1304/A130401/13000120/</a></td>
 </tr>
-<tr data-sender="Kohei Takagi" data-genre="すき焼き" data-type="食べログ">
-  <td class="date">2024/12/19</td>
+<tr data-sender="Kohei Takagi" data-genre="すき焼き">
   <td><span class="tag sender kohei">K</span></td>
   <td class="name-cell">米久本店</td>
   <td class="station-cell">浅草駅（つくばＥＸＰ）</td>
   <td><span class="tag genre">すき焼き</span></td>
   <td class="link-cell"><a href="https://tabelog.com/tokyo/A1311/A131102/13003667/" target="_blank" rel="noopener">https://tabelog.com/tokyo/A1311/A131102/13003667/</a></td>
 </tr>
-<tr data-sender="AiriToumei" data-genre="居酒屋" data-type="食べログ">
-  <td class="date">2024/12/28</td>
+<tr data-sender="AiriToumei" data-genre="居酒屋">
   <td><span class="tag sender airi">A</span></td>
-  <td class="name-cell">新宿花園町 なかむら庵</td>
+  <td class="name-cell">新宿花園町 なかむら庵 - 新宿御苑前</td>
   <td class="station-cell">新宿御苑前駅</td>
   <td><span class="tag genre">居酒屋</span></td>
   <td class="link-cell"><a href="https://s.tabelog.com/tokyo/A1304/A130402/13215606/" target="_blank" rel="noopener">https://s.tabelog.com/tokyo/A1304/A130402/13215606/</a></td>
 </tr>
-<tr data-sender="Kohei Takagi" data-genre="居酒屋" data-type="食べログ">
-  <td class="date">2024/12/30</td>
+<tr data-sender="Kohei Takagi" data-genre="居酒屋">
   <td><span class="tag sender kohei">K</span></td>
-  <td class="name-cell">うゆうのご予約</td>
+  <td class="name-cell">うゆうのご予約 - 渋谷</td>
   <td class="station-cell">渋谷駅</td>
   <td><span class="tag genre">居酒屋</span></td>
   <td class="link-cell"><a href="https://tabelog.com/tokyo/A1303/A130301/13270586/" target="_blank" rel="noopener">https://tabelog.com/tokyo/A1303/A130301/13270586/</a></td>
 </tr>
-<tr data-sender="AiriToumei" data-genre="" data-type="Googleマップ">
-  <td class="date">2024/12/30</td>
+<tr data-sender="AiriToumei" data-genre="">
   <td><span class="tag sender airi">A</span></td>
   <td class="name-cell"></td>
   <td class="station-cell"></td>
   <td></td>
   <td class="link-cell"><a href="https://g.co/kgs/BdpbnRL" target="_blank" rel="noopener">https://g.co/kgs/BdpbnRL</a></td>
 </tr>
-<tr data-sender="Kohei Takagi" data-genre="和食" data-type="食べログ">
-  <td class="date">2024/12/30</td>
+<tr data-sender="Kohei Takagi" data-genre="和食">
   <td><span class="tag sender kohei">K</span></td>
   <td class="name-cell">茶茶 このか</td>
   <td class="station-cell">渋谷駅</td>
   <td><span class="tag genre">和食</span></td>
   <td class="link-cell"><a href="https://tabelog.com/tokyo/A1303/A130301/13058972/" target="_blank" rel="noopener">https://tabelog.com/tokyo/A1303/A130301/13058972/</a></td>
 </tr>
-<tr data-sender="AiriToumei" data-genre="ピザ" data-type="食べログ">
-  <td class="date">2024/12/30</td>
+<tr data-sender="AiriToumei" data-genre="ピザ">
   <td><span class="tag sender airi">A</span></td>
   <td class="name-cell">アンティーカ・ピッツェリア・ダ・ミケーレ 恵比寿</td>
   <td class="station-cell">恵比寿駅</td>
   <td><span class="tag genre">ピザ</span></td>
   <td class="link-cell"><a href="https://s.tabelog.com/tokyo/A1303/A130302/13136144/" target="_blank" rel="noopener">https://s.tabelog.com/tokyo/A1303/A130302/13136144/</a></td>
 </tr>
-<tr data-sender="AiriToumei" data-genre="レストラン" data-type="食べログ">
-  <td class="date">2024/12/30</td>
+<tr data-sender="AiriToumei" data-genre="レストラン">
   <td><span class="tag sender airi">A</span></td>
   <td class="name-cell">GRAND PYRAMID</td>
   <td class="station-cell">飯田橋駅</td>
   <td><span class="tag genre">レストラン</span></td>
   <td class="link-cell"><a href="https://s.tabelog.com/tokyo/A1309/A130905/13291427/" target="_blank" rel="noopener">https://s.tabelog.com/tokyo/A1309/A130905/13291427/</a></td>
 </tr>
-<tr data-sender="AiriToumei" data-genre="和食" data-type="食べログ">
-  <td class="date">2024/12/30</td>
+<tr data-sender="AiriToumei" data-genre="和食">
   <td><span class="tag sender airi">A</span></td>
-  <td class="name-cell"></td>
+  <td class="name-cell">京ばし松輪</td>
   <td class="station-cell">京橋駅</td>
   <td><span class="tag genre">和食</span></td>
   <td class="link-cell"><a href="https://s.tabelog.com/tokyo/A1302/A130202/13014384/" target="_blank" rel="noopener">https://s.tabelog.com/tokyo/A1302/A130202/13014384/</a></td>
 </tr>
-<tr data-sender="Kohei Takagi" data-genre="メキシコ料理" data-type="食べログ">
-  <td class="date">2024/12/30</td>
+<tr data-sender="Kohei Takagi" data-genre="メキシコ料理">
   <td><span class="tag sender kohei">K</span></td>
   <td class="name-cell">フォンダ・デ・ラ・マドゥルガーダ</td>
   <td class="station-cell">北参道駅</td>
   <td><span class="tag genre">メキシコ料理</span></td>
   <td class="link-cell"><a href="https://tabelog.com/tokyo/A1306/A130601/13004395/" target="_blank" rel="noopener">https://tabelog.com/tokyo/A1306/A130601/13004395/</a></td>
 </tr>
-<tr data-sender="Kohei Takagi" data-genre="イタリアン" data-type="食べログ">
-  <td class="date">2024/12/30</td>
+<tr data-sender="Kohei Takagi" data-genre="イタリアン">
   <td><span class="tag sender kohei">K</span></td>
   <td class="name-cell">マザーズ 吉祥寺店</td>
   <td class="station-cell">吉祥寺駅</td>
   <td><span class="tag genre">イタリアン</span></td>
   <td class="link-cell"><a href="https://tabelog.com/tokyo/A1320/A132001/13129774/" target="_blank" rel="noopener">https://tabelog.com/tokyo/A1320/A132001/13129774/</a></td>
 </tr>
-<tr data-sender="Kohei Takagi" data-genre="スペイン料理" data-type="食べログ">
-  <td class="date">2024/12/30</td>
+<tr data-sender="Kohei Takagi" data-genre="スペイン料理">
   <td><span class="tag sender kohei">K</span></td>
   <td class="name-cell">オセアノ</td>
   <td class="station-cell">吉祥寺駅</td>
   <td><span class="tag genre">スペイン料理</span></td>
   <td class="link-cell"><a href="https://tabelog.com/tokyo/A1320/A132001/13253370/" target="_blank" rel="noopener">https://tabelog.com/tokyo/A1320/A132001/13253370/</a></td>
 </tr>
-<tr data-sender="Kohei Takagi" data-genre="スペイン料理" data-type="食べログ">
-  <td class="date">2024/12/30</td>
-  <td><span class="tag sender kohei">K</span></td>
-  <td class="name-cell">オセアノ</td>
-  <td class="station-cell">吉祥寺駅</td>
-  <td><span class="tag genre">スペイン料理</span></td>
-  <td class="link-cell"><a href="https://tabelog.com/tokyo/A1320/A132001/13253370/dtlrvwlst/B501927020/?lid=tabelog_pickup_review" target="_blank" rel="noopener">https://tabelog.com/tokyo/A1320/A132001/13253370/dtl…</a></td>
-</tr>
-<tr data-sender="Kohei Takagi" data-genre="そば" data-type="食べログ">
-  <td class="date">2024/12/30</td>
+<tr data-sender="Kohei Takagi" data-genre="そば">
   <td><span class="tag sender kohei">K</span></td>
   <td class="name-cell">板蕎麦 香り家</td>
   <td class="station-cell">恵比寿駅</td>
   <td><span class="tag genre">そば</span></td>
   <td class="link-cell"><a href="https://tabelog.com/tokyo/A1303/A130302/13001653/dtlrvwlst/B498867792/" target="_blank" rel="noopener">https://tabelog.com/tokyo/A1303/A130302/13001653/dtl…</a></td>
 </tr>
-<tr data-sender="AiriToumei" data-genre="" data-type="Googleマップ">
-  <td class="date">2024/12/30</td>
+<tr data-sender="AiriToumei" data-genre="">
   <td><span class="tag sender airi">A</span></td>
   <td class="name-cell"></td>
   <td class="station-cell"></td>
   <td></td>
   <td class="link-cell"><a href="https://g.co/kgs/zvQPMaE" target="_blank" rel="noopener">https://g.co/kgs/zvQPMaE</a></td>
 </tr>
-<tr data-sender="Kohei Takagi" data-genre="カフェ" data-type="食べログ">
-  <td class="date">2024/12/30</td>
+<tr data-sender="Kohei Takagi" data-genre="カフェ">
   <td><span class="tag sender kohei">K</span></td>
-  <td class="name-cell">ケーニッヒ 吉祥寺店</td>
+  <td class="name-cell">ケーニッヒ 吉祥寺店 - 吉祥寺</td>
   <td class="station-cell">吉祥寺駅</td>
   <td><span class="tag genre">カフェ</span></td>
   <td class="link-cell"><a href="https://tabelog.com/tokyo/A1320/A132001/13222845/" target="_blank" rel="noopener">https://tabelog.com/tokyo/A1320/A132001/13222845/</a></td>
 </tr>
-<tr data-sender="AiriToumei" data-genre="" data-type="Googleマップ">
-  <td class="date">2024/12/30</td>
+<tr data-sender="AiriToumei" data-genre="">
   <td><span class="tag sender airi">A</span></td>
   <td class="name-cell"></td>
   <td class="station-cell"></td>
   <td></td>
   <td class="link-cell"><a href="https://g.co/kgs/rYJBSJY" target="_blank" rel="noopener">https://g.co/kgs/rYJBSJY</a></td>
 </tr>
-<tr data-sender="AiriToumei" data-genre="" data-type="Googleマップ">
-  <td class="date">2024/12/30</td>
+<tr data-sender="AiriToumei" data-genre="">
   <td><span class="tag sender airi">A</span></td>
   <td class="name-cell"></td>
   <td class="station-cell"></td>
   <td></td>
   <td class="link-cell"><a href="https://g.co/kgs/H1JNMvc" target="_blank" rel="noopener">https://g.co/kgs/H1JNMvc</a></td>
 </tr>
-<tr data-sender="Kohei Takagi" data-genre="カフェ" data-type="食べログ">
-  <td class="date">2024/12/30</td>
+<tr data-sender="Kohei Takagi" data-genre="カフェ">
   <td><span class="tag sender kohei">K</span></td>
   <td class="name-cell">茶房 武蔵野文庫</td>
   <td class="station-cell">吉祥寺駅</td>
   <td><span class="tag genre">カフェ</span></td>
   <td class="link-cell"><a href="https://tabelog.com/tokyo/A1320/A132001/13005823/" target="_blank" rel="noopener">https://tabelog.com/tokyo/A1320/A132001/13005823/</a></td>
 </tr>
-<tr data-sender="Kohei Takagi" data-genre="ベトナム料理" data-type="食べログ">
-  <td class="date">2024/12/30</td>
+<tr data-sender="Kohei Takagi" data-genre="ベトナム料理">
   <td><span class="tag sender kohei">K</span></td>
   <td class="name-cell">フォーティントーキョー 吉祥寺店</td>
   <td class="station-cell">吉祥寺駅</td>
   <td><span class="tag genre">ベトナム料理</span></td>
   <td class="link-cell"><a href="https://tabelog.com/tokyo/A1320/A132001/13285799/" target="_blank" rel="noopener">https://tabelog.com/tokyo/A1320/A132001/13285799/</a></td>
 </tr>
-<tr data-sender="Kohei Takagi" data-genre="カレー" data-type="食べログ">
-  <td class="date">2024/12/30</td>
+<tr data-sender="Kohei Takagi" data-genre="カレー">
   <td><span class="tag sender kohei">K</span></td>
   <td class="name-cell">Sajilo Cafe</td>
   <td class="station-cell">吉祥寺駅</td>
   <td><span class="tag genre">カレー</span></td>
   <td class="link-cell"><a href="https://tabelog.com/tokyo/A1320/A132001/13049661/" target="_blank" rel="noopener">https://tabelog.com/tokyo/A1320/A132001/13049661/</a></td>
 </tr>
-<tr data-sender="Kohei Takagi" data-genre="タイ料理" data-type="食べログ">
-  <td class="date">2024/12/30</td>
+<tr data-sender="Kohei Takagi" data-genre="タイ料理">
   <td><span class="tag sender kohei">K</span></td>
   <td class="name-cell">アムリタ食堂</td>
   <td class="station-cell">吉祥寺駅</td>
   <td><span class="tag genre">タイ料理</span></td>
   <td class="link-cell"><a href="https://tabelog.com/tokyo/A1320/A132001/13005829/" target="_blank" rel="noopener">https://tabelog.com/tokyo/A1320/A132001/13005829/</a></td>
 </tr>
-<tr data-sender="Kohei Takagi" data-genre="ラーメン" data-type="食べログ">
-  <td class="date">2024/12/30</td>
+<tr data-sender="Kohei Takagi" data-genre="ラーメン">
   <td><span class="tag sender kohei">K</span></td>
   <td class="name-cell">珍来亭</td>
   <td class="station-cell">吉祥寺駅</td>
   <td><span class="tag genre">ラーメン</span></td>
   <td class="link-cell"><a href="https://tabelog.com/tokyo/A1320/A132001/13015931/" target="_blank" rel="noopener">https://tabelog.com/tokyo/A1320/A132001/13015931/</a></td>
 </tr>
-<tr data-sender="AiriToumei" data-genre="焼肉" data-type="食べログ">
-  <td class="date">2024/12/30</td>
+<tr data-sender="AiriToumei" data-genre="焼肉">
   <td><span class="tag sender airi">A</span></td>
   <td class="name-cell">李朝園 吉祥寺店</td>
   <td class="station-cell">吉祥寺駅</td>
   <td><span class="tag genre">焼肉</span></td>
   <td class="link-cell"><a href="https://s.tabelog.com/tokyo/A1320/A132001/13005772/" target="_blank" rel="noopener">https://s.tabelog.com/tokyo/A1320/A132001/13005772/</a></td>
 </tr>
-<tr data-sender="AiriToumei" data-genre="居酒屋" data-type="食べログ">
-  <td class="date">2024/12/30</td>
+<tr data-sender="AiriToumei" data-genre="居酒屋">
   <td><span class="tag sender airi">A</span></td>
-  <td class="name-cell">酒・蕎麦 田治</td>
+  <td class="name-cell">酒・蕎麦 田治 - 大崎広小路</td>
   <td class="station-cell">大崎広小路駅</td>
   <td><span class="tag genre">居酒屋</span></td>
   <td class="link-cell"><a href="https://s.tabelog.com/tokyo/A1316/A131603/13146956/dtlrvwlst/B461045383/?use_type=0&amp;smp=1" target="_blank" rel="noopener">https://s.tabelog.com/tokyo/A1316/A131603/13146956/d…</a></td>
 </tr>
-<tr data-sender="Kohei Takagi" data-genre="居酒屋" data-type="食べログ">
-  <td class="date">2024/12/30</td>
+<tr data-sender="Kohei Takagi" data-genre="居酒屋">
   <td><span class="tag sender kohei">K</span></td>
-  <td class="name-cell">肉と蕎麦の店　晴レルヤのご予約</td>
+  <td class="name-cell">肉と蕎麦の店　晴レルヤのご予約 - 西荻窪</td>
   <td class="station-cell">西荻窪駅</td>
   <td><span class="tag genre">居酒屋</span></td>
   <td class="link-cell"><a href="https://tabelog.com/tokyo/A1319/A131907/13248021/" target="_blank" rel="noopener">https://tabelog.com/tokyo/A1319/A131907/13248021/</a></td>
 </tr>
-<tr data-sender="AiriToumei" data-genre="居酒屋" data-type="食べログ">
-  <td class="date">2024/12/30</td>
+<tr data-sender="AiriToumei" data-genre="居酒屋">
   <td><span class="tag sender airi">A</span></td>
-  <td class="name-cell">肉と蕎麦の店　晴レルヤのご予約</td>
-  <td class="station-cell">西荻窪駅</td>
-  <td><span class="tag genre">居酒屋</span></td>
-  <td class="link-cell"><a href="https://s.tabelog.com/tokyo/A1319/A131907/13248021/dtlrvwlst/B498386114/?followee_only=false" target="_blank" rel="noopener">https://s.tabelog.com/tokyo/A1319/A131907/13248021/d…</a></td>
-</tr>
-<tr data-sender="AiriToumei" data-genre="居酒屋" data-type="食べログ">
-  <td class="date">2024/12/30</td>
-  <td><span class="tag sender airi">A</span></td>
-  <td class="name-cell">地下酒場 亜時戸のご予約</td>
+  <td class="name-cell">地下酒場 亜時戸のご予約 - 高円寺</td>
   <td class="station-cell">高円寺駅</td>
   <td><span class="tag genre">居酒屋</span></td>
   <td class="link-cell"><a href="https://s.tabelog.com/tokyo/A1319/A131904/13269815/" target="_blank" rel="noopener">https://s.tabelog.com/tokyo/A1319/A131904/13269815/</a></td>
 </tr>
-<tr data-sender="Kohei Takagi" data-genre="餃子" data-type="食べログ">
-  <td class="date">2024/12/30</td>
+<tr data-sender="Kohei Takagi" data-genre="餃子">
   <td><span class="tag sender kohei">K</span></td>
   <td class="name-cell">67餃子 恵比寿店</td>
   <td class="station-cell">恵比寿駅</td>
   <td><span class="tag genre">餃子</span></td>
   <td class="link-cell"><a href="https://tabelog.com/tokyo/A1303/A130302/13090227/" target="_blank" rel="noopener">https://tabelog.com/tokyo/A1303/A130302/13090227/</a></td>
 </tr>
-<tr data-sender="Kohei Takagi" data-genre="居酒屋" data-type="食べログ">
-  <td class="date">2024/12/30</td>
+<tr data-sender="Kohei Takagi" data-genre="居酒屋">
   <td><span class="tag sender kohei">K</span></td>
   <td class="name-cell">鼎</td>
   <td class="station-cell">新宿三丁目駅</td>
   <td><span class="tag genre">居酒屋</span></td>
   <td class="link-cell"><a href="https://tabelog.com/tokyo/A1304/A130401/13000879/" target="_blank" rel="noopener">https://tabelog.com/tokyo/A1304/A130401/13000879/</a></td>
 </tr>
-<tr data-sender="AiriToumei" data-genre="そば" data-type="食べログ">
-  <td class="date">2024/12/30</td>
+<tr data-sender="AiriToumei" data-genre="そば">
   <td><span class="tag sender airi">A</span></td>
   <td class="name-cell">青山 川上庵</td>
   <td class="station-cell">表参道駅</td>
   <td><span class="tag genre">そば</span></td>
   <td class="link-cell"><a href="https://s.tabelog.com/tokyo/A1306/A130602/13033164/" target="_blank" rel="noopener">https://s.tabelog.com/tokyo/A1306/A130602/13033164/</a></td>
 </tr>
-<tr data-sender="AiriToumei" data-genre="餃子" data-type="食べログ">
-  <td class="date">2024/12/30</td>
+<tr data-sender="AiriToumei" data-genre="餃子">
   <td><span class="tag sender airi">A</span></td>
-  <td class="name-cell">雲龍亭 浜んまち</td>
+  <td class="name-cell">雲龍亭 浜んまち - 思案橋</td>
   <td class="station-cell">思案橋駅</td>
   <td><span class="tag genre">餃子</span></td>
   <td class="link-cell"><a href="https://s.tabelog.com/nagasaki/A4201/A420101/42004653/" target="_blank" rel="noopener">https://s.tabelog.com/nagasaki/A4201/A420101/4200465…</a></td>
 </tr>
-<tr data-sender="AiriToumei" data-genre="海鮮" data-type="食べログ">
-  <td class="date">2024/12/30</td>
+<tr data-sender="AiriToumei" data-genre="海鮮">
   <td><span class="tag sender airi">A</span></td>
-  <td class="name-cell">多ら福　亜紗</td>
+  <td class="name-cell">多ら福　亜紗 - 思案橋</td>
   <td class="station-cell">思案橋駅</td>
   <td><span class="tag genre">海鮮</span></td>
   <td class="link-cell"><a href="https://s.tabelog.com/nagasaki/A4201/A420101/42004997/" target="_blank" rel="noopener">https://s.tabelog.com/nagasaki/A4201/A420101/4200499…</a></td>
 </tr>
-<tr data-sender="Kohei Takagi" data-genre="海鮮" data-type="食べログ">
-  <td class="date">2024/12/30</td>
+<tr data-sender="Kohei Takagi" data-genre="海鮮">
   <td><span class="tag sender kohei">K</span></td>
-  <td class="name-cell">いけ洲居酒屋 むつ五郎</td>
+  <td class="name-cell">いけ洲居酒屋 むつ五郎 - 新大工町</td>
   <td class="station-cell">新大工町駅</td>
   <td><span class="tag genre">海鮮</span></td>
   <td class="link-cell"><a href="https://tabelog.com/nagasaki/A4201/A420101/42003703/" target="_blank" rel="noopener">https://tabelog.com/nagasaki/A4201/A420101/42003703/</a></td>
 </tr>
-<tr data-sender="AiriToumei" data-genre="おにぎり" data-type="食べログ">
-  <td class="date">2024/12/30</td>
+<tr data-sender="AiriToumei" data-genre="おにぎり">
   <td><span class="tag sender airi">A</span></td>
-  <td class="name-cell">かにや 本店</td>
+  <td class="name-cell">かにや 本店 - 観光通</td>
   <td class="station-cell">観光通駅</td>
   <td><span class="tag genre">おにぎり</span></td>
   <td class="link-cell"><a href="https://s.tabelog.com/nagasaki/A4201/A420101/42000832/" target="_blank" rel="noopener">https://s.tabelog.com/nagasaki/A4201/A420101/4200083…</a></td>
 </tr>
-<tr data-sender="Kohei Takagi" data-genre="居酒屋" data-type="食べログ">
-  <td class="date">2024/12/30</td>
+<tr data-sender="Kohei Takagi" data-genre="居酒屋">
   <td><span class="tag sender kohei">K</span></td>
   <td class="name-cell">亜紗 本店</td>
   <td class="station-cell">桜町駅</td>
   <td><span class="tag genre">居酒屋</span></td>
   <td class="link-cell"><a href="https://tabelog.com/nagasaki/A4201/A420101/42001366/" target="_blank" rel="noopener">https://tabelog.com/nagasaki/A4201/A420101/42001366/</a></td>
 </tr>
-<tr data-sender="AiriToumei" data-genre="居酒屋" data-type="食べログ">
-  <td class="date">2024/12/30</td>
+<tr data-sender="AiriToumei" data-genre="居酒屋">
   <td><span class="tag sender airi">A</span></td>
   <td class="name-cell">凛々丸</td>
   <td class="station-cell">長崎駅前駅</td>
   <td><span class="tag genre">居酒屋</span></td>
   <td class="link-cell"><a href="https://s.tabelog.com/nagasaki/A4201/A420101/42000288/dtlphotolst/" target="_blank" rel="noopener">https://s.tabelog.com/nagasaki/A4201/A420101/4200028…</a></td>
 </tr>
-<tr data-sender="AiriToumei" data-genre="寿司" data-type="食べログ">
-  <td class="date">2024/12/30</td>
+<tr data-sender="AiriToumei" data-genre="寿司">
   <td><span class="tag sender airi">A</span></td>
-  <td class="name-cell">魚たつ</td>
+  <td class="name-cell">魚たつ - 五島町</td>
   <td class="station-cell">五島町駅</td>
   <td><span class="tag genre">寿司</span></td>
   <td class="link-cell"><a href="https://s.tabelog.com/nagasaki/A4201/A420101/42007413/" target="_blank" rel="noopener">https://s.tabelog.com/nagasaki/A4201/A420101/4200741…</a></td>
 </tr>
-<tr data-sender="Kohei Takagi" data-genre="そば" data-type="食べログ">
-  <td class="date">2024/12/30</td>
+<tr data-sender="Kohei Takagi" data-genre="そば">
   <td><span class="tag sender kohei">K</span></td>
   <td class="name-cell">十割蕎麦 否否三杯</td>
   <td class="station-cell">青山一丁目駅</td>
   <td><span class="tag genre">そば</span></td>
   <td class="link-cell"><a href="https://s.tabelog.com/tokyo/A1306/A130603/13225341/" target="_blank" rel="noopener">https://s.tabelog.com/tokyo/A1306/A130603/13225341/</a></td>
 </tr>
-<tr data-sender="Kohei Takagi" data-genre="居酒屋" data-type="食べログ">
-  <td class="date">2024/12/30</td>
+<tr data-sender="Kohei Takagi" data-genre="居酒屋">
   <td><span class="tag sender kohei">K</span></td>
   <td class="name-cell">鰾</td>
   <td class="station-cell">代々木上原駅</td>
   <td><span class="tag genre">居酒屋</span></td>
   <td class="link-cell"><a href="https://tabelog.com/tokyo/A1318/A131811/13130853/" target="_blank" rel="noopener">https://tabelog.com/tokyo/A1318/A131811/13130853/</a></td>
 </tr>
-<tr data-sender="Kohei Takagi" data-genre="ビストロ" data-type="食べログ">
-  <td class="date">2024/12/30</td>
+<tr data-sender="Kohei Takagi" data-genre="ビストロ">
   <td><span class="tag sender kohei">K</span></td>
-  <td class="name-cell">36.5℃ kitchenのご予約</td>
+  <td class="name-cell">36.5℃ kitchenのご予約 - 代々木上原</td>
   <td class="station-cell">代々木上原駅</td>
   <td><span class="tag genre">ビストロ</span></td>
   <td class="link-cell"><a href="https://tabelog.com/tokyo/A1318/A131811/13174351/" target="_blank" rel="noopener">https://tabelog.com/tokyo/A1318/A131811/13174351/</a></td>
 </tr>
-<tr data-sender="Kohei Takagi" data-genre="そば" data-type="食べログ">
-  <td class="date">2024/12/30</td>
+<tr data-sender="Kohei Takagi" data-genre="そば">
   <td><span class="tag sender kohei">K</span></td>
   <td class="name-cell">蕎麦屋 山都</td>
   <td class="station-cell">代々木上原駅</td>
   <td><span class="tag genre">そば</span></td>
   <td class="link-cell"><a href="https://tabelog.com/tokyo/A1318/A131811/13001822/" target="_blank" rel="noopener">https://tabelog.com/tokyo/A1318/A131811/13001822/</a></td>
 </tr>
-<tr data-sender="Kohei Takagi" data-genre="イタリアン" data-type="食べログ">
-  <td class="date">2024/12/30</td>
+<tr data-sender="Kohei Takagi" data-genre="イタリアン">
   <td><span class="tag sender kohei">K</span></td>
   <td class="name-cell">フニクラ</td>
   <td class="station-cell">代々木上原駅</td>
   <td><span class="tag genre">イタリアン</span></td>
   <td class="link-cell"><a href="https://tabelog.com/tokyo/A1318/A131811/13147435/" target="_blank" rel="noopener">https://tabelog.com/tokyo/A1318/A131811/13147435/</a></td>
 </tr>
-<tr data-sender="AiriToumei" data-genre="イタリアン" data-type="食べログ">
-  <td class="date">2024/12/30</td>
+<tr data-sender="AiriToumei" data-genre="イタリアン">
   <td><span class="tag sender airi">A</span></td>
   <td class="name-cell">ドンブラボー</td>
   <td class="station-cell">国領駅</td>
   <td><span class="tag genre">イタリアン</span></td>
   <td class="link-cell"><a href="https://s.tabelog.com/tokyo/A1326/A132601/13144681/#google_vignette" target="_blank" rel="noopener">https://s.tabelog.com/tokyo/A1326/A132601/13144681/#…</a></td>
 </tr>
-<tr data-sender="AiriToumei" data-genre="カフェ" data-type="食べログ">
-  <td class="date">2024/12/30</td>
+<tr data-sender="AiriToumei" data-genre="カフェ">
   <td><span class="tag sender airi">A</span></td>
   <td class="name-cell">ロージナ茶房</td>
   <td class="station-cell">国立駅</td>
   <td><span class="tag genre">カフェ</span></td>
   <td class="link-cell"><a href="https://s.tabelog.com/tokyo/A1325/A132503/13016337/" target="_blank" rel="noopener">https://s.tabelog.com/tokyo/A1325/A132503/13016337/</a></td>
 </tr>
-<tr data-sender="Kohei Takagi" data-genre="餃子" data-type="食べログ">
-  <td class="date">2024/12/30</td>
+<tr data-sender="Kohei Takagi" data-genre="餃子">
   <td><span class="tag sender kohei">K</span></td>
   <td class="name-cell">亜細亜割烹 蓮月</td>
   <td class="station-cell">乃木坂駅</td>
   <td><span class="tag genre">餃子</span></td>
   <td class="link-cell"><a href="https://tabelog.com/tokyo/A1307/A130701/13182912/" target="_blank" rel="noopener">https://tabelog.com/tokyo/A1307/A130701/13182912/</a></td>
 </tr>
-<tr data-sender="AiriToumei" data-genre="餃子" data-type="食べログ">
-  <td class="date">2024/12/30</td>
+<tr data-sender="AiriToumei" data-genre="餃子">
   <td><span class="tag sender airi">A</span></td>
   <td class="name-cell">您好</td>
   <td class="station-cell">幡ケ谷駅</td>
   <td><span class="tag genre">餃子</span></td>
   <td class="link-cell"><a href="https://s.tabelog.com/tokyo/A1318/A131807/13001812/" target="_blank" rel="noopener">https://s.tabelog.com/tokyo/A1318/A131807/13001812/</a></td>
 </tr>
-<tr data-sender="AiriToumei" data-genre="" data-type="食べログ">
-  <td class="date">2024/12/30</td>
+<tr data-sender="AiriToumei" data-genre="">
   <td><span class="tag sender airi">A</span></td>
   <td class="name-cell">味覚 文士</td>
   <td class="station-cell"></td>
   <td></td>
   <td class="link-cell"><a href="https://s.tabelog.com/smartphone/reviewer/016696859/review/detail/B505765369/" target="_blank" rel="noopener">https://s.tabelog.com/smartphone/reviewer/016696859/…</a></td>
 </tr>
-<tr data-sender="Kohei Takagi" data-genre="そば" data-type="食べログ">
-  <td class="date">2024/12/30</td>
+<tr data-sender="Kohei Takagi" data-genre="そば">
   <td><span class="tag sender kohei">K</span></td>
   <td class="name-cell">石臼挽き手打 蕎楽亭</td>
   <td class="station-cell">牛込神楽坂駅</td>
   <td><span class="tag genre">そば</span></td>
   <td class="link-cell"><a href="https://tabelog.com/tokyo/A1309/A130905/13000479/" target="_blank" rel="noopener">https://tabelog.com/tokyo/A1309/A130905/13000479/</a></td>
 </tr>
-<tr data-sender="Kohei Takagi" data-genre="居酒屋" data-type="食べログ">
-  <td class="date">2024/12/30</td>
+<tr data-sender="Kohei Takagi" data-genre="居酒屋">
   <td><span class="tag sender kohei">K</span></td>
   <td class="name-cell">酒ト壽</td>
   <td class="station-cell">牛込神楽坂駅</td>
   <td><span class="tag genre">居酒屋</span></td>
   <td class="link-cell"><a href="https://tabelog.com/tokyo/A1309/A130905/13178957/" target="_blank" rel="noopener">https://tabelog.com/tokyo/A1309/A130905/13178957/</a></td>
 </tr>
-<tr data-sender="Kohei Takagi" data-genre="そば" data-type="食べログ">
-  <td class="date">2024/12/30</td>
+<tr data-sender="Kohei Takagi" data-genre="そば">
   <td><span class="tag sender kohei">K</span></td>
-  <td class="name-cell">九頭龍蕎麦のご予約</td>
+  <td class="name-cell">九頭龍蕎麦のご予約 - 飯田橋</td>
   <td class="station-cell">飯田橋駅</td>
   <td><span class="tag genre">そば</span></td>
   <td class="link-cell"><a href="https://tabelog.com/tokyo/A1309/A130905/13110922/" target="_blank" rel="noopener">https://tabelog.com/tokyo/A1309/A130905/13110922/</a></td>
 </tr>
-<tr data-sender="Kohei Takagi" data-genre="ピザ" data-type="食べログ">
-  <td class="date">2024/12/30</td>
+<tr data-sender="Kohei Takagi" data-genre="ピザ">
   <td><span class="tag sender kohei">K</span></td>
   <td class="name-cell">マルゲリータパリアッチョ 神楽坂店</td>
   <td class="station-cell">牛込神楽坂駅</td>
   <td><span class="tag genre">ピザ</span></td>
   <td class="link-cell"><a href="https://tabelog.com/tokyo/A1309/A130905/13056980/" target="_blank" rel="noopener">https://tabelog.com/tokyo/A1309/A130905/13056980/</a></td>
 </tr>
-<tr data-sender="AiriToumei" data-genre="居酒屋" data-type="食べログ">
-  <td class="date">2024/12/30</td>
+<tr data-sender="AiriToumei" data-genre="居酒屋">
   <td><span class="tag sender airi">A</span></td>
-  <td class="name-cell">のいえのご予約</td>
+  <td class="name-cell">のいえのご予約 - 神楽坂</td>
   <td class="station-cell">神楽坂駅</td>
   <td><span class="tag genre">居酒屋</span></td>
   <td class="link-cell"><a href="https://s.tabelog.com/tokyo/A1309/A130905/13273260/" target="_blank" rel="noopener">https://s.tabelog.com/tokyo/A1309/A130905/13273260/</a></td>
 </tr>
-<tr data-sender="AiriToumei" data-genre="ちゃんぽん" data-type="食べログ">
-  <td class="date">2024/12/30</td>
+<tr data-sender="AiriToumei" data-genre="ちゃんぽん">
   <td><span class="tag sender airi">A</span></td>
-  <td class="name-cell">香蘭</td>
+  <td class="name-cell">香蘭 - 佐世保</td>
   <td class="station-cell">佐世保駅</td>
   <td><span class="tag genre">ちゃんぽん</span></td>
   <td class="link-cell"><a href="https://s.tabelog.com/nagasaki/A4202/A420201/42001533/" target="_blank" rel="noopener">https://s.tabelog.com/nagasaki/A4202/A420201/4200153…</a></td>
 </tr>
-<tr data-sender="AiriToumei" data-genre="中華" data-type="食べログ">
-  <td class="date">2024/12/30</td>
+<tr data-sender="AiriToumei" data-genre="中華">
   <td><span class="tag sender airi">A</span></td>
   <td class="name-cell">中国菜館 江山楼 中華街新館</td>
   <td class="station-cell">新地中華街駅</td>
   <td><span class="tag genre">中華</span></td>
   <td class="link-cell"><a href="https://tabelog.com/nagasaki/A4201/A420101/42005120/" target="_blank" rel="noopener">https://tabelog.com/nagasaki/A4201/A420101/42005120/</a></td>
 </tr>
-<tr data-sender="AiriToumei" data-genre="ちゃんぽん" data-type="食べログ">
-  <td class="date">2024/12/30</td>
+<tr data-sender="AiriToumei" data-genre="ちゃんぽん">
   <td><span class="tag sender airi">A</span></td>
   <td class="name-cell">会楽園</td>
   <td class="station-cell">新地中華街駅</td>
   <td><span class="tag genre">ちゃんぽん</span></td>
   <td class="link-cell"><a href="https://tabelog.com/nagasaki/A4201/A420101/42000054/" target="_blank" rel="noopener">https://tabelog.com/nagasaki/A4201/A420101/42000054/</a></td>
 </tr>
-<tr data-sender="Kohei Takagi" data-genre="居酒屋" data-type="食べログ">
-  <td class="date">2024/12/30</td>
-  <td><span class="tag sender kohei">K</span></td>
-  <td class="name-cell">亜紗 本店</td>
-  <td class="station-cell">桜町駅</td>
-  <td><span class="tag genre">居酒屋</span></td>
-  <td class="link-cell"><a href="https://tabelog.com/nagasaki/A4201/A420101/42001366/" target="_blank" rel="noopener">https://tabelog.com/nagasaki/A4201/A420101/42001366/</a></td>
-</tr>
-<tr data-sender="AiriToumei" data-genre="和食" data-type="食べログ">
-  <td class="date">2024/12/30</td>
+<tr data-sender="AiriToumei" data-genre="和食">
   <td><span class="tag sender airi">A</span></td>
   <td class="name-cell">吉宗 本店</td>
   <td class="station-cell">観光通駅</td>
   <td><span class="tag genre">和食</span></td>
   <td class="link-cell"><a href="https://s.tabelog.com/nagasaki/A4201/A420101/42000059/" target="_blank" rel="noopener">https://s.tabelog.com/nagasaki/A4201/A420101/4200005…</a></td>
 </tr>
-<tr data-sender="AiriToumei" data-genre="そば" data-type="食べログ">
-  <td class="date">2024/12/30</td>
-  <td><span class="tag sender airi">A</span></td>
-  <td class="name-cell">青山 川上庵</td>
-  <td class="station-cell">表参道駅</td>
-  <td><span class="tag genre">そば</span></td>
-  <td class="link-cell"><a href="https://s.tabelog.com/tokyo/A1306/A130602/13033164/" target="_blank" rel="noopener">https://s.tabelog.com/tokyo/A1306/A130602/13033164/</a></td>
-</tr>
-<tr data-sender="AiriToumei" data-genre="そば" data-type="食べログ">
-  <td class="date">2024/12/30</td>
+<tr data-sender="AiriToumei" data-genre="そば">
   <td><span class="tag sender airi">A</span></td>
   <td class="name-cell">うずら家</td>
   <td class="station-cell"></td>
   <td><span class="tag genre">そば</span></td>
   <td class="link-cell"><a href="https://s.tabelog.com/nagano/A2001/A200101/20000191/" target="_blank" rel="noopener">https://s.tabelog.com/nagano/A2001/A200101/20000191/</a></td>
 </tr>
-<tr data-sender="AiriToumei" data-genre="居酒屋" data-type="食べログ">
-  <td class="date">2024/12/30</td>
+<tr data-sender="AiriToumei" data-genre="居酒屋">
   <td><span class="tag sender airi">A</span></td>
   <td class="name-cell">鍵屋</td>
   <td class="station-cell">鶯谷駅</td>
   <td><span class="tag genre">居酒屋</span></td>
   <td class="link-cell"><a href="https://s.tabelog.com/tokyo/A1311/A131104/13003743/" target="_blank" rel="noopener">https://s.tabelog.com/tokyo/A1311/A131104/13003743/</a></td>
 </tr>
-<tr data-sender="AiriToumei" data-genre="ラーメン" data-type="食べログ">
-  <td class="date">2024/12/30</td>
+<tr data-sender="AiriToumei" data-genre="ラーメン">
   <td><span class="tag sender airi">A</span></td>
-  <td class="name-cell"></td>
+  <td class="name-cell">天下一品 吉祥寺店</td>
   <td class="station-cell">吉祥寺駅</td>
   <td><span class="tag genre">ラーメン</span></td>
   <td class="link-cell"><a href="https://s.tabelog.com/tokyo/A1320/A132001/13010043/" target="_blank" rel="noopener">https://s.tabelog.com/tokyo/A1320/A132001/13010043/</a></td>
 </tr>
-<tr data-sender="AiriToumei" data-genre="焼き鳥" data-type="食べログ">
-  <td class="date">2024/12/30</td>
+<tr data-sender="AiriToumei" data-genre="焼き鳥">
   <td><span class="tag sender airi">A</span></td>
   <td class="name-cell">とり澤</td>
   <td class="station-cell">中目黒駅</td>
   <td><span class="tag genre">焼き鳥</span></td>
   <td class="link-cell"><a href="https://s.tabelog.com/tokyo/A1317/A131701/13248473/dtlrvwlst/B497925611/?lid=tabelog_pickup_review&amp;srt=" target="_blank" rel="noopener">https://s.tabelog.com/tokyo/A1317/A131701/13248473/d…</a></td>
 </tr>
-<tr data-sender="AiriToumei" data-genre="居酒屋" data-type="食べログ">
-  <td class="date">2024/12/30</td>
+<tr data-sender="AiriToumei" data-genre="居酒屋">
   <td><span class="tag sender airi">A</span></td>
-  <td class="name-cell">西荻窪 百舌</td>
+  <td class="name-cell">西荻窪 百舌 - 西荻窪</td>
   <td class="station-cell">西荻窪駅</td>
   <td><span class="tag genre">居酒屋</span></td>
   <td class="link-cell"><a href="https://s.tabelog.com/tokyo/A1319/A131907/13286223/" target="_blank" rel="noopener">https://s.tabelog.com/tokyo/A1319/A131907/13286223/</a></td>
 </tr>
-<tr data-sender="AiriToumei" data-genre="居酒屋" data-type="食べログ">
-  <td class="date">2024/12/30</td>
+<tr data-sender="AiriToumei" data-genre="居酒屋">
   <td><span class="tag sender airi">A</span></td>
   <td class="name-cell">しんぽ</td>
   <td class="station-cell">西荻窪駅</td>
   <td><span class="tag genre">居酒屋</span></td>
   <td class="link-cell"><a href="https://s.tabelog.com/tokyo/A1319/A131907/13245161/" target="_blank" rel="noopener">https://s.tabelog.com/tokyo/A1319/A131907/13245161/</a></td>
 </tr>
-<tr data-sender="AiriToumei" data-genre="居酒屋" data-type="食べログ">
-  <td class="date">2024/12/30</td>
+<tr data-sender="AiriToumei" data-genre="居酒屋">
   <td><span class="tag sender airi">A</span></td>
   <td class="name-cell">なゝ樹 本店</td>
   <td class="station-cell">恵比寿駅</td>
   <td><span class="tag genre">居酒屋</span></td>
   <td class="link-cell"><a href="https://s.tabelog.com/tokyo/A1303/A130302/13002064/" target="_blank" rel="noopener">https://s.tabelog.com/tokyo/A1303/A130302/13002064/</a></td>
 </tr>
-<tr data-sender="AiriToumei" data-genre="うなぎ" data-type="食べログ">
-  <td class="date">2024/12/30</td>
+<tr data-sender="AiriToumei" data-genre="うなぎ">
   <td><span class="tag sender airi">A</span></td>
   <td class="name-cell">鰻割烹 伊豆栄 本店</td>
   <td class="station-cell">京成上野駅</td>
   <td><span class="tag genre">うなぎ</span></td>
   <td class="link-cell"><a href="https://s.tabelog.com/tokyo/A1311/A131101/13003586/" target="_blank" rel="noopener">https://s.tabelog.com/tokyo/A1311/A131101/13003586/</a></td>
 </tr>
-<tr data-sender="AiriToumei" data-genre="フレンチ" data-type="食べログ">
-  <td class="date">2024/12/30</td>
+<tr data-sender="AiriToumei" data-genre="フレンチ">
   <td><span class="tag sender airi">A</span></td>
   <td class="name-cell">レストラン 花の木</td>
   <td class="station-cell">大濠公園駅</td>
   <td><span class="tag genre">フレンチ</span></td>
   <td class="link-cell"><a href="https://s.tabelog.com/fukuoka/A4001/A400105/40001046/" target="_blank" rel="noopener">https://s.tabelog.com/fukuoka/A4001/A400105/40001046…</a></td>
 </tr>
-<tr data-sender="AiriToumei" data-genre="焼き鳥" data-type="食べログ">
-  <td class="date">2024/12/30</td>
+<tr data-sender="AiriToumei" data-genre="焼き鳥">
   <td><span class="tag sender airi">A</span></td>
   <td class="name-cell">串焼 上乃裏</td>
   <td class="station-cell">神泉駅</td>
   <td><span class="tag genre">焼き鳥</span></td>
   <td class="link-cell"><a href="https://s.tabelog.com/tokyo/A1303/A130301/13189246/" target="_blank" rel="noopener">https://s.tabelog.com/tokyo/A1303/A130301/13189246/</a></td>
 </tr>
-<tr data-sender="AiriToumei" data-genre="もつ焼き" data-type="食べログ">
-  <td class="date">2024/12/30</td>
+<tr data-sender="AiriToumei" data-genre="もつ焼き">
   <td><span class="tag sender airi">A</span></td>
-  <td class="name-cell">もつやき ばん</td>
+  <td class="name-cell">もつやき ばん - 祐天寺</td>
   <td class="station-cell">祐天寺駅</td>
   <td><span class="tag genre">もつ焼き</span></td>
   <td class="link-cell"><a href="https://s.tabelog.com/tokyo/A1317/A131701/13010363/" target="_blank" rel="noopener">https://s.tabelog.com/tokyo/A1317/A131701/13010363/</a></td>
 </tr>
-<tr data-sender="AiriToumei" data-genre="カフェ" data-type="食べログ">
-  <td class="date">2024/12/30</td>
+<tr data-sender="AiriToumei" data-genre="カフェ">
   <td><span class="tag sender airi">A</span></td>
   <td class="name-cell">ファクトリー&amp;ラボ 神乃珈琲</td>
   <td class="station-cell">学芸大学駅</td>
   <td><span class="tag genre">カフェ</span></td>
   <td class="link-cell"><a href="https://s.tabelog.com/tokyo/A1317/A131702/13200023/" target="_blank" rel="noopener">https://s.tabelog.com/tokyo/A1317/A131702/13200023/</a></td>
 </tr>
-<tr data-sender="Kohei Takagi" data-genre="" data-type="地図共有">
-  <td class="date">2024/12/30</td>
+<tr data-sender="Kohei Takagi" data-genre="">
   <td><span class="tag sender kohei">K</span></td>
   <td class="name-cell"></td>
   <td class="station-cell"></td>
   <td></td>
   <td class="link-cell"><a href="https://share.google/DBPQ6xIcpcKa6PCbQ" target="_blank" rel="noopener">https://share.google/DBPQ6xIcpcKa6PCbQ</a></td>
 </tr>
-<tr data-sender="Kohei Takagi" data-genre="居酒屋" data-type="食べログ">
-  <td class="date">2024/12/30</td>
+<tr data-sender="Kohei Takagi" data-genre="居酒屋">
   <td><span class="tag sender kohei">K</span></td>
   <td class="name-cell">呑家</td>
   <td class="station-cell">学芸大学駅</td>
   <td><span class="tag genre">居酒屋</span></td>
   <td class="link-cell"><a href="https://tabelog.com/tokyo/A1317/A131702/13143025/" target="_blank" rel="noopener">https://tabelog.com/tokyo/A1317/A131702/13143025/</a></td>
 </tr>
-<tr data-sender="AiriToumei" data-genre="イタリアン" data-type="食べログ">
-  <td class="date">2024/12/30</td>
+<tr data-sender="AiriToumei" data-genre="イタリアン">
   <td><span class="tag sender airi">A</span></td>
-  <td class="name-cell">ピッツェリア メリプリンチペッサ 渋谷店のご予約</td>
+  <td class="name-cell">ピッツェリア メリプリンチペッサ 渋谷店のご予約 - 神泉</td>
   <td class="station-cell">神泉駅</td>
   <td><span class="tag genre">イタリアン</span></td>
   <td class="link-cell"><a href="https://tabelog.com/tokyo/A1303/A130301/13112030/" target="_blank" rel="noopener">https://tabelog.com/tokyo/A1303/A130301/13112030/</a></td>
 </tr>
-<tr data-sender="Kohei Takagi" data-genre="肉料理" data-type="食べログ">
-  <td class="date">2024/12/30</td>
+<tr data-sender="Kohei Takagi" data-genre="肉料理">
   <td><span class="tag sender kohei">K</span></td>
-  <td class="name-cell">ステーキライスとカレーの店センタービーフ アトレ吉祥寺店</td>
+  <td class="name-cell">ステーキライスとカレーの店センタービーフ アトレ吉祥寺店 - 吉祥寺</td>
   <td class="station-cell">吉祥寺駅</td>
   <td><span class="tag genre">肉料理</span></td>
   <td class="link-cell"><a href="https://tabelog.com/tokyo/A1320/A132001/13289050/" target="_blank" rel="noopener">https://tabelog.com/tokyo/A1320/A132001/13289050/</a></td>
 </tr>
-<tr data-sender="AiriToumei" data-genre="おにぎり" data-type="食べログ">
-  <td class="date">2024/12/30</td>
+<tr data-sender="AiriToumei" data-genre="おにぎり">
   <td><span class="tag sender airi">A</span></td>
-  <td class="name-cell">にぎりめし</td>
+  <td class="name-cell">にぎりめし - すすきの</td>
   <td class="station-cell">すすきの駅（市電）</td>
   <td><span class="tag genre">おにぎり</span></td>
   <td class="link-cell"><a href="https://s.tabelog.com/hokkaido/A0101/A010103/1007577/" target="_blank" rel="noopener">https://s.tabelog.com/hokkaido/A0101/A010103/1007577…</a></td>
 </tr>
-<tr data-sender="AiriToumei" data-genre="" data-type="Googleマップ">
-  <td class="date">2024/12/30</td>
+<tr data-sender="AiriToumei" data-genre="">
   <td><span class="tag sender airi">A</span></td>
   <td class="name-cell"></td>
   <td class="station-cell"></td>
   <td></td>
   <td class="link-cell"><a href="https://g.co/kgs/QX7VA2F" target="_blank" rel="noopener">https://g.co/kgs/QX7VA2F</a></td>
 </tr>
-<tr data-sender="AiriToumei" data-genre="肉料理" data-type="食べログ">
-  <td class="date">2024/12/30</td>
+<tr data-sender="AiriToumei" data-genre="肉料理">
   <td><span class="tag sender airi">A</span></td>
-  <td class="name-cell">炭火焼 ひろ</td>
+  <td class="name-cell">炭火焼 ひろ - 吉祥寺</td>
   <td class="station-cell">吉祥寺駅</td>
   <td><span class="tag genre">肉料理</span></td>
   <td class="link-cell"><a href="https://s.tabelog.com/tokyo/A1320/A132001/13114509/dtlphotolst/" target="_blank" rel="noopener">https://s.tabelog.com/tokyo/A1320/A132001/13114509/d…</a></td>
 </tr>
-<tr data-sender="AiriToumei" data-genre="バー" data-type="食べログ">
-  <td class="date">2024/12/30</td>
+<tr data-sender="AiriToumei" data-genre="バー">
   <td><span class="tag sender airi">A</span></td>
   <td class="name-cell">Vision whisky bar 吉祥寺</td>
   <td class="station-cell">吉祥寺駅</td>
   <td><span class="tag genre">バー</span></td>
   <td class="link-cell"><a href="https://s.tabelog.com/tokyo/A1320/A132001/13029770/dtlphotolst/" target="_blank" rel="noopener">https://s.tabelog.com/tokyo/A1320/A132001/13029770/d…</a></td>
 </tr>
-<tr data-sender="AiriToumei" data-genre="お好み焼き" data-type="食べログ">
-  <td class="date">2024/12/30</td>
+<tr data-sender="AiriToumei" data-genre="お好み焼き">
   <td><span class="tag sender airi">A</span></td>
-  <td class="name-cell">玉屋</td>
+  <td class="name-cell">玉屋 - 吉祥寺</td>
   <td class="station-cell">吉祥寺駅</td>
   <td><span class="tag genre">お好み焼き</span></td>
   <td class="link-cell"><a href="https://s.tabelog.com/tokyo/A1320/A132001/13114890/" target="_blank" rel="noopener">https://s.tabelog.com/tokyo/A1320/A132001/13114890/</a></td>
 </tr>
-<tr data-sender="AiriToumei" data-genre="ビストロ" data-type="食べログ">
-  <td class="date">2024/12/30</td>
+<tr data-sender="AiriToumei" data-genre="ビストロ">
   <td><span class="tag sender airi">A</span></td>
   <td class="name-cell">Hidamari</td>
   <td class="station-cell">吉祥寺駅</td>
   <td><span class="tag genre">ビストロ</span></td>
   <td class="link-cell"><a href="https://s.tabelog.com/tokyo/A1320/A132001/13247853/" target="_blank" rel="noopener">https://s.tabelog.com/tokyo/A1320/A132001/13247853/</a></td>
 </tr>
-<tr data-sender="AiriToumei" data-genre="ビストロ" data-type="食べログ">
-  <td class="date">2024/12/30</td>
+<tr data-sender="AiriToumei" data-genre="ビストロ">
   <td><span class="tag sender airi">A</span></td>
   <td class="name-cell">アンドゥー</td>
   <td class="station-cell">吉祥寺駅</td>
   <td><span class="tag genre">ビストロ</span></td>
   <td class="link-cell"><a href="https://s.tabelog.com/tokyo/A1320/A132001/13005833/" target="_blank" rel="noopener">https://s.tabelog.com/tokyo/A1320/A132001/13005833/</a></td>
 </tr>
-<tr data-sender="AiriToumei" data-genre="郷土料理" data-type="食べログ">
-  <td class="date">2024/12/30</td>
+<tr data-sender="AiriToumei" data-genre="郷土料理">
   <td><span class="tag sender airi">A</span></td>
   <td class="name-cell">浜やん</td>
   <td class="station-cell">吉祥寺駅</td>
   <td><span class="tag genre">郷土料理</span></td>
   <td class="link-cell"><a href="https://s.tabelog.com/tokyo/A1320/A132001/13009964/" target="_blank" rel="noopener">https://s.tabelog.com/tokyo/A1320/A132001/13009964/</a></td>
 </tr>
-<tr data-sender="AiriToumei" data-genre="イタリアン" data-type="食べログ">
-  <td class="date">2024/12/30</td>
+<tr data-sender="AiriToumei" data-genre="イタリアン">
   <td><span class="tag sender airi">A</span></td>
   <td class="name-cell">ストリーム</td>
   <td class="station-cell">井の頭公園駅</td>
   <td><span class="tag genre">イタリアン</span></td>
   <td class="link-cell"><a href="https://s.tabelog.com/tokyo/A1320/A132001/13254077/" target="_blank" rel="noopener">https://s.tabelog.com/tokyo/A1320/A132001/13254077/</a></td>
 </tr>
-<tr data-sender="AiriToumei" data-genre="寿司" data-type="食べログ">
-  <td class="date">2024/12/30</td>
+<tr data-sender="AiriToumei" data-genre="寿司">
   <td><span class="tag sender airi">A</span></td>
-  <td class="name-cell">喜久寿司</td>
+  <td class="name-cell">喜久寿司 - 吉祥寺</td>
   <td class="station-cell">吉祥寺駅</td>
   <td><span class="tag genre">寿司</span></td>
   <td class="link-cell"><a href="https://s.tabelog.com/tokyo/A1320/A132001/13070768/" target="_blank" rel="noopener">https://s.tabelog.com/tokyo/A1320/A132001/13070768/</a></td>
 </tr>
-<tr data-sender="AiriToumei" data-genre="寿司" data-type="食べログ">
-  <td class="date">2024/12/30</td>
+<tr data-sender="AiriToumei" data-genre="居酒屋">
   <td><span class="tag sender airi">A</span></td>
-  <td class="name-cell">喜久寿司</td>
-  <td class="station-cell">吉祥寺駅</td>
-  <td><span class="tag genre">寿司</span></td>
-  <td class="link-cell"><a href="https://s.tabelog.com/tokyo/A1320/A132001/13070768/" target="_blank" rel="noopener">https://s.tabelog.com/tokyo/A1320/A132001/13070768/</a></td>
-</tr>
-<tr data-sender="AiriToumei" data-genre="居酒屋" data-type="食べログ">
-  <td class="date">2024/12/30</td>
-  <td><span class="tag sender airi">A</span></td>
-  <td class="name-cell">吉祥寺 じゅん粋のご予約</td>
+  <td class="name-cell">吉祥寺 じゅん粋のご予約 - 吉祥寺</td>
   <td class="station-cell">吉祥寺駅</td>
   <td><span class="tag genre">居酒屋</span></td>
   <td class="link-cell"><a href="https://s.tabelog.com/tokyo/A1320/A132001/13150930/" target="_blank" rel="noopener">https://s.tabelog.com/tokyo/A1320/A132001/13150930/</a></td>
 </tr>
-<tr data-sender="AiriToumei" data-genre="居酒屋" data-type="食べログ">
-  <td class="date">2024/12/30</td>
+<tr data-sender="AiriToumei" data-genre="居酒屋">
   <td><span class="tag sender airi">A</span></td>
   <td class="name-cell">酒と料理 かぶ菜</td>
   <td class="station-cell">吉祥寺駅</td>
   <td><span class="tag genre">居酒屋</span></td>
   <td class="link-cell"><a href="https://s.tabelog.com/tokyo/A1320/A132001/13047448/" target="_blank" rel="noopener">https://s.tabelog.com/tokyo/A1320/A132001/13047448/</a></td>
 </tr>
-<tr data-sender="AiriToumei" data-genre="居酒屋" data-type="食べログ">
-  <td class="date">2024/12/30</td>
+<tr data-sender="AiriToumei" data-genre="居酒屋">
   <td><span class="tag sender airi">A</span></td>
-  <td class="name-cell">ささの葉</td>
+  <td class="name-cell">ささの葉 - 吉祥寺</td>
   <td class="station-cell">吉祥寺駅</td>
   <td><span class="tag genre">居酒屋</span></td>
   <td class="link-cell"><a href="https://s.tabelog.com/tokyo/A1320/A132001/13047814/" target="_blank" rel="noopener">https://s.tabelog.com/tokyo/A1320/A132001/13047814/</a></td>
 </tr>
-<tr data-sender="AiriToumei" data-genre="和食" data-type="食べログ">
-  <td class="date">2024/12/30</td>
-  <td><span class="tag sender airi">A</span></td>
-  <td class="name-cell">茶茶 このか</td>
-  <td class="station-cell">渋谷駅</td>
-  <td><span class="tag genre">和食</span></td>
-  <td class="link-cell"><a href="https://s.tabelog.com/tokyo/A1303/A130301/13058972/" target="_blank" rel="noopener">https://s.tabelog.com/tokyo/A1303/A130301/13058972/</a></td>
-</tr>
-<tr data-sender="Kohei Takagi" data-genre="居酒屋" data-type="食べログ">
-  <td class="date">2024/12/30</td>
+<tr data-sender="Kohei Takagi" data-genre="居酒屋">
   <td><span class="tag sender kohei">K</span></td>
   <td class="name-cell">葱や平吉 渋谷宇田川町店</td>
   <td class="station-cell">渋谷駅</td>
   <td><span class="tag genre">居酒屋</span></td>
   <td class="link-cell"><a href="https://tabelog.com/tokyo/A1303/A130301/13024073/" target="_blank" rel="noopener">https://tabelog.com/tokyo/A1303/A130301/13024073/</a></td>
 </tr>
-<tr data-sender="AiriToumei" data-genre="餃子" data-type="食べログ">
-  <td class="date">2024/12/30</td>
+<tr data-sender="AiriToumei" data-genre="餃子">
   <td><span class="tag sender airi">A</span></td>
   <td class="name-cell">餃子の王さま</td>
   <td class="station-cell">浅草駅（東武・都営・メトロ）</td>
   <td><span class="tag genre">餃子</span></td>
   <td class="link-cell"><a href="https://s.tabelog.com/tokyo/A1311/A131102/13016814/" target="_blank" rel="noopener">https://s.tabelog.com/tokyo/A1311/A131102/13016814/</a></td>
 </tr>
-<tr data-sender="AiriToumei" data-genre="餃子" data-type="食べログ">
-  <td class="date">2024/12/30</td>
+<tr data-sender="AiriToumei" data-genre="餃子">
   <td><span class="tag sender airi">A</span></td>
   <td class="name-cell">龍門</td>
   <td class="station-cell">大鳥居駅</td>
   <td><span class="tag genre">餃子</span></td>
   <td class="link-cell"><a href="https://s.tabelog.com/tokyo/A1315/A131504/13017770/" target="_blank" rel="noopener">https://s.tabelog.com/tokyo/A1315/A131504/13017770/</a></td>
 </tr>
-<tr data-sender="AiriToumei" data-genre="メキシコ料理" data-type="食べログ">
-  <td class="date">2024/12/30</td>
-  <td><span class="tag sender airi">A</span></td>
-  <td class="name-cell">フォンダ・デ・ラ・マドゥルガーダ</td>
-  <td class="station-cell">北参道駅</td>
-  <td><span class="tag genre">メキシコ料理</span></td>
-  <td class="link-cell"><a href="https://s.tabelog.com/tokyo/A1306/A130601/13004395/dtlphotolst/?type=4" target="_blank" rel="noopener">https://s.tabelog.com/tokyo/A1306/A130601/13004395/d…</a></td>
-</tr>
-<tr data-sender="AiriToumei" data-genre="メキシコ料理" data-type="食べログ">
-  <td class="date">2024/12/30</td>
-  <td><span class="tag sender airi">A</span></td>
-  <td class="name-cell">フォンダ・デ・ラ・マドゥルガーダ</td>
-  <td class="station-cell">北参道駅</td>
-  <td><span class="tag genre">メキシコ料理</span></td>
-  <td class="link-cell"><a href="https://tabelog.com/tokyo/A1306/A130601/13004395/" target="_blank" rel="noopener">https://tabelog.com/tokyo/A1306/A130601/13004395/</a></td>
-</tr>
-<tr data-sender="AiriToumei" data-genre="タコス" data-type="食べログ">
-  <td class="date">2024/12/30</td>
+<tr data-sender="AiriToumei" data-genre="タコス">
   <td><span class="tag sender airi">A</span></td>
   <td class="name-cell">TACOS 3hermanos Harajuku</td>
   <td class="station-cell">明治神宮前駅</td>
   <td><span class="tag genre">タコス</span></td>
   <td class="link-cell"><a href="https://s.tabelog.com/tokyo/A1306/A130601/13297578/" target="_blank" rel="noopener">https://s.tabelog.com/tokyo/A1306/A130601/13297578/</a></td>
 </tr>
-<tr data-sender="AiriToumei" data-genre="メキシコ料理" data-type="食べログ">
-  <td class="date">2024/12/30</td>
+<tr data-sender="AiriToumei" data-genre="メキシコ料理">
   <td><span class="tag sender airi">A</span></td>
-  <td class="name-cell">Tacos 3 Hermanos Ebisu</td>
+  <td class="name-cell">Tacos 3 Hermanos Ebisu - 恵比寿</td>
   <td class="station-cell">恵比寿駅</td>
   <td><span class="tag genre">メキシコ料理</span></td>
   <td class="link-cell"><a href="https://s.tabelog.com/tokyo/A1303/A130302/13309222/#google_vignette" target="_blank" rel="noopener">https://s.tabelog.com/tokyo/A1303/A130302/13309222/#…</a></td>
 </tr>
-<tr data-sender="AiriToumei" data-genre="ケーキ" data-type="食べログ">
-  <td class="date">2024/12/30</td>
+<tr data-sender="AiriToumei" data-genre="ケーキ">
   <td><span class="tag sender airi">A</span></td>
   <td class="name-cell">ラプティットシュルプリーズ</td>
   <td class="station-cell">西荻窪駅</td>
   <td><span class="tag genre">ケーキ</span></td>
   <td class="link-cell"><a href="https://s.tabelog.com/tokyo/A1319/A131907/13219979/" target="_blank" rel="noopener">https://s.tabelog.com/tokyo/A1319/A131907/13219979/</a></td>
 </tr>
-<tr data-sender="AiriToumei" data-genre="ラーメン" data-type="食べログ">
-  <td class="date">2024/12/30</td>
+<tr data-sender="AiriToumei" data-genre="ラーメン">
   <td><span class="tag sender airi">A</span></td>
-  <td class="name-cell">桜上水 船越</td>
+  <td class="name-cell">桜上水 船越 - 桜上水</td>
   <td class="station-cell">桜上水駅</td>
   <td><span class="tag genre">ラーメン</span></td>
   <td class="link-cell"><a href="https://s.tabelog.com/tokyo/A1318/A131809/13281101/" target="_blank" rel="noopener">https://s.tabelog.com/tokyo/A1318/A131809/13281101/</a></td>
 </tr>
-<tr data-sender="AiriToumei" data-genre="ポルトガル料理" data-type="食べログ">
-  <td class="date">2024/12/30</td>
+<tr data-sender="AiriToumei" data-genre="ポルトガル料理">
   <td><span class="tag sender airi">A</span></td>
   <td class="name-cell">クリスチアノ</td>
   <td class="station-cell">代々木八幡駅</td>
   <td><span class="tag genre">ポルトガル料理</span></td>
   <td class="link-cell"><a href="https://s.tabelog.com/tokyo/A1318/A131810/13120409/#google_vignette" target="_blank" rel="noopener">https://s.tabelog.com/tokyo/A1318/A131810/13120409/#…</a></td>
 </tr>
-<tr data-sender="AiriToumei" data-genre="" data-type="食べログ">
-  <td class="date">2024/12/30</td>
-  <td><span class="tag sender airi">A</span></td>
-  <td class="name-cell">味覚 文士</td>
-  <td class="station-cell"></td>
-  <td></td>
-  <td class="link-cell"><a href="https://s.tabelog.com/smartphone/reviewer/016696859/review/detail/B511943121/" target="_blank" rel="noopener">https://s.tabelog.com/smartphone/reviewer/016696859/…</a></td>
-</tr>
-<tr data-sender="Kohei Takagi" data-genre="そば" data-type="食べログ">
-  <td class="date">2024/12/30</td>
+<tr data-sender="Kohei Takagi" data-genre="そば">
   <td><span class="tag sender kohei">K</span></td>
-  <td class="name-cell">よもだそば 新宿西口店</td>
+  <td class="name-cell">よもだそば 新宿西口店 - 新宿</td>
   <td class="station-cell">新宿駅</td>
   <td><span class="tag genre">そば</span></td>
   <td class="link-cell"><a href="https://tabelog.com/tokyo/A1304/A130401/13254059/" target="_blank" rel="noopener">https://tabelog.com/tokyo/A1304/A130401/13254059/</a></td>
 </tr>
-<tr data-sender="AiriToumei" data-genre="" data-type="食べログ">
-  <td class="date">2024/12/30</td>
-  <td><span class="tag sender airi">A</span></td>
-  <td class="name-cell">味覚 文士</td>
-  <td class="station-cell"></td>
-  <td></td>
-  <td class="link-cell"><a href="https://s.tabelog.com/smartphone/reviewer/016696859/review/detail/B514817185/" target="_blank" rel="noopener">https://s.tabelog.com/smartphone/reviewer/016696859/…</a></td>
-</tr>
-<tr data-sender="AiriToumei" data-genre="ポルトガル料理" data-type="食べログ">
-  <td class="date">2025/10/14</td>
-  <td><span class="tag sender airi">A</span></td>
-  <td class="name-cell">クリスチアノ</td>
-  <td class="station-cell">代々木八幡駅</td>
-  <td><span class="tag genre">ポルトガル料理</span></td>
-  <td class="link-cell"><a href="https://s.tabelog.com/tokyo/A1318/A131810/13120409/" target="_blank" rel="noopener">https://s.tabelog.com/tokyo/A1318/A131810/13120409/</a></td>
-</tr>
-<tr data-sender="AiriToumei" data-genre="餃子" data-type="食べログ">
-  <td class="date">2025/10/14</td>
-  <td><span class="tag sender airi">A</span></td>
-  <td class="name-cell">您好</td>
-  <td class="station-cell">幡ケ谷駅</td>
-  <td><span class="tag genre">餃子</span></td>
-  <td class="link-cell"><a href="https://s.tabelog.com/tokyo/A1318/A131807/13001812/" target="_blank" rel="noopener">https://s.tabelog.com/tokyo/A1318/A131807/13001812/</a></td>
-</tr>
-<tr data-sender="AiriToumei" data-genre="ポルトガル料理" data-type="食べログ">
-  <td class="date">2025/10/14</td>
-  <td><span class="tag sender airi">A</span></td>
-  <td class="name-cell">クリスチアノ</td>
-  <td class="station-cell">代々木八幡駅</td>
-  <td><span class="tag genre">ポルトガル料理</span></td>
-  <td class="link-cell"><a href="https://s.tabelog.com/tokyo/A1318/A131810/13120409/" target="_blank" rel="noopener">https://s.tabelog.com/tokyo/A1318/A131810/13120409/</a></td>
-</tr>
-<tr data-sender="Kohei Takagi" data-genre="フレンチ" data-type="食べログ">
-  <td class="date">2025/10/17</td>
+<tr data-sender="Kohei Takagi" data-genre="フレンチ">
   <td><span class="tag sender kohei">K</span></td>
-  <td class="name-cell">HATOのご予約</td>
+  <td class="name-cell">HATOのご予約 - 初台</td>
   <td class="station-cell">初台駅</td>
   <td><span class="tag genre">フレンチ</span></td>
   <td class="link-cell"><a href="https://tabelog.com/tokyo/A1318/A131807/13260629/" target="_blank" rel="noopener">https://tabelog.com/tokyo/A1318/A131807/13260629/</a></td>
 </tr>
-<tr data-sender="AiriToumei" data-genre="" data-type="地図共有">
-  <td class="date">2025/10/31</td>
+<tr data-sender="AiriToumei" data-genre="">
   <td><span class="tag sender airi">A</span></td>
   <td class="name-cell"></td>
   <td class="station-cell"></td>
   <td></td>
   <td class="link-cell"><a href="https://share.google/M732mwphOBrjitQHK" target="_blank" rel="noopener">https://share.google/M732mwphOBrjitQHK</a></td>
 </tr>
-<tr data-sender="AiriToumei" data-genre="ポルトガル料理" data-type="食べログ">
-  <td class="date">2025/10/31</td>
-  <td><span class="tag sender airi">A</span></td>
-  <td class="name-cell">クリスチアノ</td>
-  <td class="station-cell">代々木八幡駅</td>
-  <td><span class="tag genre">ポルトガル料理</span></td>
-  <td class="link-cell"><a href="https://s.tabelog.com/tokyo/A1318/A131810/13120409/" target="_blank" rel="noopener">https://s.tabelog.com/tokyo/A1318/A131810/13120409/</a></td>
-</tr>
-<tr data-sender="AiriToumei" data-genre="アジア料理" data-type="食べログ">
-  <td class="date">2025/10/31</td>
+<tr data-sender="AiriToumei" data-genre="アジア料理">
   <td><span class="tag sender airi">A</span></td>
   <td class="name-cell">めくる莊</td>
   <td class="station-cell">神楽坂駅</td>
   <td><span class="tag genre">アジア料理</span></td>
   <td class="link-cell"><a href="https://s.tabelog.com/tokyo/A1309/A130905/13304382/" target="_blank" rel="noopener">https://s.tabelog.com/tokyo/A1309/A130905/13304382/</a></td>
 </tr>
-<tr data-sender="AiriToumei" data-genre="カフェ" data-type="食べログ">
-  <td class="date">2025/11/23</td>
+<tr data-sender="AiriToumei" data-genre="カフェ">
   <td><span class="tag sender airi">A</span></td>
-  <td class="name-cell">喫茶 うろひびこ</td>
+  <td class="name-cell">喫茶 うろひびこ - 吉祥寺</td>
   <td class="station-cell">吉祥寺駅</td>
   <td><span class="tag genre">カフェ</span></td>
   <td class="link-cell"><a href="https://s.tabelog.com/tokyo/A1320/A132001/13257429/" target="_blank" rel="noopener">https://s.tabelog.com/tokyo/A1320/A132001/13257429/</a></td>
 </tr>
-<tr data-sender="AiriToumei" data-genre="スペイン料理" data-type="食べログ">
-  <td class="date">2025/11/28</td>
+<tr data-sender="AiriToumei" data-genre="スペイン料理">
   <td><span class="tag sender airi">A</span></td>
   <td class="name-cell">エル・カステリャーノ</td>
   <td class="station-cell">渋谷駅</td>
   <td><span class="tag genre">スペイン料理</span></td>
   <td class="link-cell"><a href="https://s.tabelog.com/tokyo/A1303/A130301/13001313/" target="_blank" rel="noopener">https://s.tabelog.com/tokyo/A1303/A130301/13001313/</a></td>
 </tr>
-<tr data-sender="Kohei Takagi" data-genre="そば" data-type="食べログ">
-  <td class="date">2025/11/30</td>
+<tr data-sender="Kohei Takagi" data-genre="そば">
   <td><span class="tag sender kohei">K</span></td>
-  <td class="name-cell">かんだやぶそば</td>
+  <td class="name-cell">かんだやぶそば - 淡路町</td>
   <td class="station-cell">淡路町駅</td>
   <td><span class="tag genre">そば</span></td>
   <td class="link-cell"><a href="https://tabelog.com/tokyo/A1310/A131002/13000334/" target="_blank" rel="noopener">https://tabelog.com/tokyo/A1310/A131002/13000334/</a></td>
 </tr>
-<tr data-sender="Kohei Takagi" data-genre="バー" data-type="食べログ">
-  <td class="date">2025/11/30</td>
+<tr data-sender="Kohei Takagi" data-genre="バー">
   <td><span class="tag sender kohei">K</span></td>
-  <td class="name-cell">Sta. 神田のご予約</td>
+  <td class="name-cell">Sta. 神田のご予約 - 淡路町</td>
   <td class="station-cell">淡路町駅</td>
   <td><span class="tag genre">バー</span></td>
   <td class="link-cell"><a href="https://tabelog.com/tokyo/A1310/A131002/13257405/" target="_blank" rel="noopener">https://tabelog.com/tokyo/A1310/A131002/13257405/</a></td>
 </tr>
-<tr data-sender="Kohei Takagi" data-genre="牛丼" data-type="食べログ">
-  <td class="date">2025/11/30</td>
+<tr data-sender="Kohei Takagi" data-genre="牛丼">
   <td><span class="tag sender kohei">K</span></td>
   <td class="name-cell">牛丼専門サンボ</td>
   <td class="station-cell">末広町駅</td>
   <td><span class="tag genre">牛丼</span></td>
   <td class="link-cell"><a href="https://tabelog.com/tokyo/A1311/A131101/13006063/" target="_blank" rel="noopener">https://tabelog.com/tokyo/A1311/A131101/13006063/</a></td>
 </tr>
-<tr data-sender="Kohei Takagi" data-genre="餃子" data-type="食べログ">
-  <td class="date">2025/11/30</td>
+<tr data-sender="Kohei Takagi" data-genre="餃子">
   <td><span class="tag sender kohei">K</span></td>
-  <td class="name-cell">餃子の肉太郎</td>
+  <td class="name-cell">餃子の肉太郎 - 神保町</td>
   <td class="station-cell">神保町駅</td>
   <td><span class="tag genre">餃子</span></td>
   <td class="link-cell"><a href="https://tabelog.com/tokyo/A1310/A131003/13309865/" target="_blank" rel="noopener">https://tabelog.com/tokyo/A1310/A131003/13309865/</a></td>
 </tr>
-<tr data-sender="Kohei Takagi" data-genre="イタリアン" data-type="食べログ">
-  <td class="date">2025/11/30</td>
+<tr data-sender="Kohei Takagi" data-genre="イタリアン">
   <td><span class="tag sender kohei">K</span></td>
-  <td class="name-cell">カプリチョーザ 御茶ノ水ソラシティ店のご予約</td>
+  <td class="name-cell">カプリチョーザ 御茶ノ水ソラシティ店のご予約 - 新御茶ノ水</td>
   <td class="station-cell">新御茶ノ水駅</td>
   <td><span class="tag genre">イタリアン</span></td>
   <td class="link-cell"><a href="https://tabelog.com/tokyo/A1310/A131002/13296401/" target="_blank" rel="noopener">https://tabelog.com/tokyo/A1310/A131002/13296401/</a></td>
 </tr>
-<tr data-sender="Kohei Takagi" data-genre="" data-type="Googleマップ">
-  <td class="date">2025/11/30</td>
+<tr data-sender="Kohei Takagi" data-genre="">
   <td><span class="tag sender kohei">K</span></td>
   <td class="name-cell"></td>
   <td class="station-cell"></td>
   <td></td>
   <td class="link-cell"><a href="https://maps.app.goo.gl/d61pevik89penbvK8?g_st=ipc" target="_blank" rel="noopener">https://maps.app.goo.gl/d61pevik89penbvK8?g_st=ipc</a></td>
 </tr>
-<tr data-sender="AiriToumei" data-genre="ラーメン" data-type="食べログ">
-  <td class="date">2025/12/12</td>
+<tr data-sender="AiriToumei" data-genre="ラーメン">
   <td><span class="tag sender airi">A</span></td>
-  <td class="name-cell">札幌飛燕</td>
+  <td class="name-cell">札幌飛燕 - 新千歳空港</td>
   <td class="station-cell">新千歳空港駅</td>
   <td><span class="tag genre">ラーメン</span></td>
   <td class="link-cell"><a href="https://s.tabelog.com/hokkaido/A0107/A010701/1060609/" target="_blank" rel="noopener">https://s.tabelog.com/hokkaido/A0107/A010701/1060609…</a></td>
 </tr>
-<tr data-sender="Kohei Takagi" data-genre="居酒屋" data-type="食べログ">
-  <td class="date">2025/12/14</td>
+<tr data-sender="Kohei Takagi" data-genre="居酒屋">
   <td><span class="tag sender kohei">K</span></td>
   <td class="name-cell">ワラガモ 笑ウ鴨ニハ福来ル</td>
   <td class="station-cell">吉祥寺駅</td>
   <td><span class="tag genre">居酒屋</span></td>
   <td class="link-cell"><a href="https://tabelog.com/tokyo/A1320/A132001/13187638/" target="_blank" rel="noopener">https://tabelog.com/tokyo/A1320/A132001/13187638/</a></td>
 </tr>
-<tr data-sender="AiriToumei" data-genre="餃子" data-type="食べログ">
-  <td class="date">2025/12/19</td>
+<tr data-sender="AiriToumei" data-genre="餃子">
   <td><span class="tag sender airi">A</span></td>
-  <td class="name-cell">餃子館</td>
+  <td class="name-cell">餃子館 - 八幡山</td>
   <td class="station-cell">八幡山駅</td>
   <td><span class="tag genre">餃子</span></td>
   <td class="link-cell"><a href="https://s.tabelog.com/tokyo/A1318/A131809/13108385/" target="_blank" rel="noopener">https://s.tabelog.com/tokyo/A1318/A131809/13108385/</a></td>
 </tr>
-<tr data-sender="AiriToumei" data-genre="寿司" data-type="食べログ">
-  <td class="date">2025/12/22</td>
+<tr data-sender="AiriToumei" data-genre="寿司">
   <td><span class="tag sender airi">A</span></td>
-  <td class="name-cell">金沢まいもん寿司 上野店</td>
+  <td class="name-cell">金沢まいもん寿司 上野店 - 上野広小路</td>
   <td class="station-cell">上野広小路駅</td>
   <td><span class="tag genre">寿司</span></td>
   <td class="link-cell"><a href="https://s.tabelog.com/tokyo/A1311/A131101/13215175/" target="_blank" rel="noopener">https://s.tabelog.com/tokyo/A1311/A131101/13215175/</a></td>
 </tr>
-<tr data-sender="AiriToumei" data-genre="寿司" data-type="食べログ">
-  <td class="date">2025/12/22</td>
+<tr data-sender="AiriToumei" data-genre="寿司">
   <td><span class="tag sender airi">A</span></td>
-  <td class="name-cell">金沢まいもん寿司 渋谷パルコ店</td>
+  <td class="name-cell">金沢まいもん寿司 渋谷パルコ店 - 渋谷</td>
   <td class="station-cell">渋谷駅</td>
   <td><span class="tag genre">寿司</span></td>
   <td class="link-cell"><a href="https://s.tabelog.com/tokyo/A1303/A130301/13240931/" target="_blank" rel="noopener">https://s.tabelog.com/tokyo/A1303/A130301/13240931/</a></td>
 </tr>
-<tr data-sender="Kohei Takagi" data-genre="ピザ" data-type="食べログ">
-  <td class="date">2025/12/31</td>
+<tr data-sender="Kohei Takagi" data-genre="ピザ">
   <td><span class="tag sender kohei">K</span></td>
-  <td class="name-cell">ISENTEIのご予約</td>
+  <td class="name-cell">ISENTEIのご予約 - 吉祥寺</td>
   <td class="station-cell">吉祥寺駅</td>
   <td><span class="tag genre">ピザ</span></td>
   <td class="link-cell"><a href="https://tabelog.com/tokyo/A1320/A132001/13260154/" target="_blank" rel="noopener">https://tabelog.com/tokyo/A1320/A132001/13260154/</a></td>
 </tr>
-<tr data-sender="AiriToumei" data-genre="メキシコ料理" data-type="食べログ">
-  <td class="date">2025/12/31</td>
+<tr data-sender="AiriToumei" data-genre="メキシコ料理">
   <td><span class="tag sender airi">A</span></td>
   <td class="name-cell">BOSQUE</td>
   <td class="station-cell">目黒駅</td>
   <td><span class="tag genre">メキシコ料理</span></td>
   <td class="link-cell"><a href="https://s.tabelog.com/tokyo/A1316/A131601/13216177/" target="_blank" rel="noopener">https://s.tabelog.com/tokyo/A1316/A131601/13216177/</a></td>
 </tr>
-<tr data-sender="Kohei Takagi" data-genre="うどん" data-type="食べログ">
-  <td class="date">2025/12/31</td>
+<tr data-sender="Kohei Takagi" data-genre="うどん">
   <td><span class="tag sender kohei">K</span></td>
   <td class="name-cell">祇をん 萬屋</td>
   <td class="station-cell">祇園四条駅</td>
   <td><span class="tag genre">うどん</span></td>
   <td class="link-cell"><a href="https://tabelog.com/kyoto/A2601/A260301/26000254/" target="_blank" rel="noopener">https://tabelog.com/kyoto/A2601/A260301/26000254/</a></td>
 </tr>
-<tr data-sender="AiriToumei" data-genre="うどん" data-type="食べログ">
-  <td class="date">2025/12/31</td>
-  <td><span class="tag sender airi">A</span></td>
-  <td class="name-cell">祇をん 萬屋</td>
-  <td class="station-cell">祇園四条駅</td>
-  <td><span class="tag genre">うどん</span></td>
-  <td class="link-cell"><a href="https://tabelog.com/kyoto/A2601/A260301/26000254/" target="_blank" rel="noopener">https://tabelog.com/kyoto/A2601/A260301/26000254/</a></td>
-</tr>
-<tr data-sender="Kohei Takagi" data-genre="海鮮" data-type="食べログ">
-  <td class="date">2025/12/31</td>
+<tr data-sender="Kohei Takagi" data-genre="海鮮">
   <td><span class="tag sender kohei">K</span></td>
   <td class="name-cell">まぐろのなかだ屋</td>
   <td class="station-cell">吉祥寺駅</td>
   <td><span class="tag genre">海鮮</span></td>
   <td class="link-cell"><a href="https://tabelog.com/tokyo/A1320/A132001/13009989/" target="_blank" rel="noopener">https://tabelog.com/tokyo/A1320/A132001/13009989/</a></td>
 </tr>
-<tr data-sender="AiriToumei" data-genre="そば" data-type="食べログ">
-  <td class="date">2025/12/31</td>
+<tr data-sender="AiriToumei" data-genre="そば">
   <td><span class="tag sender airi">A</span></td>
   <td class="name-cell">よし房 凛</td>
   <td class="station-cell">根津駅</td>
   <td><span class="tag genre">そば</span></td>
   <td class="link-cell"><a href="https://s.tabelog.com/tokyo/A1311/A131106/13018408/" target="_blank" rel="noopener">https://s.tabelog.com/tokyo/A1311/A131106/13018408/</a></td>
 </tr>
-<tr data-sender="Kohei Takagi" data-genre="居酒屋" data-type="食べログ">
-  <td class="date">2025/12/31</td>
+<tr data-sender="Kohei Takagi" data-genre="居酒屋">
   <td><span class="tag sender kohei">K</span></td>
   <td class="name-cell">和食晴ル</td>
   <td class="station-cell">烏丸駅</td>
   <td><span class="tag genre">居酒屋</span></td>
   <td class="link-cell"><a href="https://tabelog.com/kyoto/A2601/A260201/26026013/" target="_blank" rel="noopener">https://tabelog.com/kyoto/A2601/A260201/26026013/</a></td>
 </tr>
-<tr data-sender="Kohei Takagi" data-genre="居酒屋" data-type="食べログ">
-  <td class="date">2025/12/31</td>
+<tr data-sender="Kohei Takagi" data-genre="居酒屋">
   <td><span class="tag sender kohei">K</span></td>
   <td class="name-cell">八坂通り 燕楽</td>
   <td class="station-cell">祇園四条駅</td>
   <td><span class="tag genre">居酒屋</span></td>
   <td class="link-cell"><a href="https://tabelog.com/kyoto/A2601/A260301/26004536/" target="_blank" rel="noopener">https://tabelog.com/kyoto/A2601/A260301/26004536/</a></td>
 </tr>
-<tr data-sender="Kohei Takagi" data-genre="和食" data-type="食べログ">
-  <td class="date">2025/12/31</td>
+<tr data-sender="Kohei Takagi" data-genre="和食">
   <td><span class="tag sender kohei">K</span></td>
   <td class="name-cell">先斗町 四季 よし菜</td>
   <td class="station-cell">三条駅</td>
   <td><span class="tag genre">和食</span></td>
   <td class="link-cell"><a href="https://tabelog.com/kyoto/A2601/A260301/26000704/" target="_blank" rel="noopener">https://tabelog.com/kyoto/A2601/A260301/26000704/</a></td>
 </tr>
-<tr data-sender="Kohei Takagi" data-genre="おでん" data-type="食べログ">
-  <td class="date">2025/12/31</td>
+<tr data-sender="Kohei Takagi" data-genre="おでん">
   <td><span class="tag sender kohei">K</span></td>
-  <td class="name-cell">ぽんしゅや三徳六味 五条高倉店のご予約</td>
+  <td class="name-cell">ぽんしゅや三徳六味 五条高倉店のご予約 - 五条</td>
   <td class="station-cell">五条駅（京都市営）</td>
   <td><span class="tag genre">おでん</span></td>
   <td class="link-cell"><a href="https://tabelog.com/kyoto/A2601/A260201/26037733/" target="_blank" rel="noopener">https://tabelog.com/kyoto/A2601/A260201/26037733/</a></td>
 </tr>
-<tr data-sender="AiriToumei" data-genre="ピザ" data-type="食べログ">
-  <td class="date">2025/12/31</td>
+<tr data-sender="AiriToumei" data-genre="ピザ">
   <td><span class="tag sender airi">A</span></td>
   <td class="name-cell">ピッツェリア ジターリア ダ フィリッポ</td>
   <td class="station-cell">石神井公園駅</td>
   <td><span class="tag genre">ピザ</span></td>
   <td class="link-cell"><a href="https://s.tabelog.com/tokyo/A1321/A132103/13149962/" target="_blank" rel="noopener">https://s.tabelog.com/tokyo/A1321/A132103/13149962/</a></td>
 </tr>
-<tr data-sender="AiriToumei" data-genre="" data-type="地図共有">
-  <td class="date">2025/12/31</td>
+<tr data-sender="AiriToumei" data-genre="">
   <td><span class="tag sender airi">A</span></td>
   <td class="name-cell"></td>
   <td class="station-cell"></td>
   <td></td>
   <td class="link-cell"><a href="https://share.google/jrE7FmuTHVMrJXSxN" target="_blank" rel="noopener">https://share.google/jrE7FmuTHVMrJXSxN</a></td>
 </tr>
-<tr data-sender="AiriToumei" data-genre="ラーメン" data-type="食べログ">
-  <td class="date">2025/12/31</td>
+<tr data-sender="AiriToumei" data-genre="ラーメン">
   <td><span class="tag sender airi">A</span></td>
-  <td class="name-cell">Homemade Ramen 麦苗</td>
+  <td class="name-cell">Homemade Ramen 麦苗 - 大森海岸</td>
   <td class="station-cell">大森海岸駅</td>
   <td><span class="tag genre">ラーメン</span></td>
   <td class="link-cell"><a href="https://s.tabelog.com/tokyo/A1315/A131502/13194812/" target="_blank" rel="noopener">https://s.tabelog.com/tokyo/A1315/A131502/13194812/</a></td>
 </tr>
-<tr data-sender="Kohei Takagi" data-genre="餃子" data-type="食べログ">
-  <td class="date">2025/12/31</td>
+<tr data-sender="Kohei Takagi" data-genre="餃子">
   <td><span class="tag sender kohei">K</span></td>
-  <td class="name-cell">SUIKAのご予約</td>
+  <td class="name-cell">SUIKAのご予約 - 吉祥寺</td>
   <td class="station-cell">吉祥寺駅</td>
   <td><span class="tag genre">餃子</span></td>
   <td class="link-cell"><a href="https://tabelog.com/tokyo/A1320/A132001/13317327/" target="_blank" rel="noopener">https://tabelog.com/tokyo/A1320/A132001/13317327/</a></td>
 </tr>
-<tr data-sender="AiriToumei" data-genre="そば" data-type="食べログ">
-  <td class="date">2025/12/31</td>
+<tr data-sender="AiriToumei" data-genre="そば">
   <td><span class="tag sender airi">A</span></td>
   <td class="name-cell">竹やぶ 箱根店</td>
   <td class="station-cell"></td>
   <td><span class="tag genre">そば</span></td>
   <td class="link-cell"><a href="https://s.tabelog.com/kanagawa/A1410/A141001/14001257/" target="_blank" rel="noopener">https://s.tabelog.com/kanagawa/A1410/A141001/1400125…</a></td>
 </tr>
-<tr data-sender="AiriToumei" data-genre="豆腐料理" data-type="食べログ">
-  <td class="date">2025/12/31</td>
+<tr data-sender="AiriToumei" data-genre="豆腐料理">
   <td><span class="tag sender airi">A</span></td>
   <td class="name-cell">湯葉丼 直吉</td>
   <td class="station-cell">箱根湯本駅</td>
   <td><span class="tag genre">豆腐料理</span></td>
   <td class="link-cell"><a href="https://s.tabelog.com/kanagawa/A1410/A141001/14007598/?default_yoyaku_condition=1&amp;svd=20260209&amp;svps=2&amp;svt=1200" target="_blank" rel="noopener">https://s.tabelog.com/kanagawa/A1410/A141001/1400759…</a></td>
 </tr>
-<tr data-sender="AiriToumei" data-genre="ラーメン" data-type="食べログ">
-  <td class="date">2025/12/31</td>
+<tr data-sender="AiriToumei" data-genre="ラーメン">
   <td><span class="tag sender airi">A</span></td>
   <td class="name-cell">日清亭 本店</td>
   <td class="station-cell">箱根湯本駅</td>
   <td><span class="tag genre">ラーメン</span></td>
   <td class="link-cell"><a href="https://s.tabelog.com/kanagawa/A1410/A141001/14010676/?default_yoyaku_condition=1&amp;svd=20260209&amp;svps=2&amp;svt=1200" target="_blank" rel="noopener">https://s.tabelog.com/kanagawa/A1410/A141001/1401067…</a></td>
 </tr>
-<tr data-sender="AiriToumei" data-genre="ピザ" data-type="食べログ">
-  <td class="date">2025/12/31</td>
+<tr data-sender="AiriToumei" data-genre="そば">
   <td><span class="tag sender airi">A</span></td>
-  <td class="name-cell">ピッツェリア ジターリア ダ フィリッポ</td>
-  <td class="station-cell">石神井公園駅</td>
-  <td><span class="tag genre">ピザ</span></td>
-  <td class="link-cell"><a href="https://s.tabelog.com/tokyo/A1321/A132103/13149962/" target="_blank" rel="noopener">https://s.tabelog.com/tokyo/A1321/A132103/13149962/</a></td>
-</tr>
-<tr data-sender="AiriToumei" data-genre="そば" data-type="食べログ">
-  <td class="date">2025/12/31</td>
-  <td><span class="tag sender airi">A</span></td>
-  <td class="name-cell">手打ち蕎麦 雷鳥</td>
+  <td class="name-cell">手打ち蕎麦 雷鳥 - 石神井公園</td>
   <td class="station-cell">石神井公園駅</td>
   <td><span class="tag genre">そば</span></td>
   <td class="link-cell"><a href="https://s.tabelog.com/tokyo/A1321/A132103/13197802/" target="_blank" rel="noopener">https://s.tabelog.com/tokyo/A1321/A132103/13197802/</a></td>
 </tr>
-<tr data-sender="AiriToumei" data-genre="そば" data-type="食べログ">
-  <td class="date">2025/12/31</td>
+<tr data-sender="AiriToumei" data-genre="そば">
   <td><span class="tag sender airi">A</span></td>
-  <td class="name-cell">蕎麦と酒処 きくち</td>
+  <td class="name-cell">蕎麦と酒処 きくち - 石神井公園</td>
   <td class="station-cell">石神井公園駅</td>
   <td><span class="tag genre">そば</span></td>
   <td class="link-cell"><a href="https://s.tabelog.com/tokyo/A1321/A132103/13243733/" target="_blank" rel="noopener">https://s.tabelog.com/tokyo/A1321/A132103/13243733/</a></td>
 </tr>
-<tr data-sender="Kohei Takagi" data-genre="" data-type="地図共有">
-  <td class="date">2025/12/31</td>
+<tr data-sender="Kohei Takagi" data-genre="">
   <td><span class="tag sender kohei">K</span></td>
   <td class="name-cell"></td>
   <td class="station-cell"></td>
   <td></td>
   <td class="link-cell"><a href="https://share.google/ZsOKwX8BhFCNlAg2n" target="_blank" rel="noopener">https://share.google/ZsOKwX8BhFCNlAg2n</a></td>
 </tr>
-<tr data-sender="AiriToumei" data-genre="中華" data-type="食べログ">
-  <td class="date">2025/12/31</td>
+<tr data-sender="AiriToumei" data-genre="中華">
   <td><span class="tag sender airi">A</span></td>
   <td class="name-cell">萬福</td>
   <td class="station-cell">東銀座駅</td>
   <td><span class="tag genre">中華</span></td>
   <td class="link-cell"><a href="https://s.tabelog.com/tokyo/A1301/A130101/13002324/" target="_blank" rel="noopener">https://s.tabelog.com/tokyo/A1301/A130101/13002324/</a></td>
 </tr>
-<tr data-sender="AiriToumei" data-genre="アジア料理" data-type="食べログ">
-  <td class="date">2025/12/31</td>
+<tr data-sender="AiriToumei" data-genre="アジア料理">
   <td><span class="tag sender airi">A</span></td>
-  <td class="name-cell">ランサーン</td>
+  <td class="name-cell">ランサーン - 吉祥寺</td>
   <td class="station-cell">吉祥寺駅</td>
   <td><span class="tag genre">アジア料理</span></td>
   <td class="link-cell"><a href="https://s.tabelog.com/tokyo/A1320/A132001/13009961/" target="_blank" rel="noopener">https://s.tabelog.com/tokyo/A1320/A132001/13009961/</a></td>
 </tr>
-<tr data-sender="Kohei Takagi" data-genre="居酒屋" data-type="食べログ">
-  <td class="date">2025/12/31</td>
+<tr data-sender="Kohei Takagi" data-genre="居酒屋">
   <td><span class="tag sender kohei">K</span></td>
-  <td class="name-cell">高丸電氣</td>
+  <td class="name-cell">高丸電氣 - 代官山</td>
   <td class="station-cell">代官山駅</td>
   <td><span class="tag genre">居酒屋</span></td>
   <td class="link-cell"><a href="https://tabelog.com/tokyo/A1303/A130301/13245809/" target="_blank" rel="noopener">https://tabelog.com/tokyo/A1303/A130301/13245809/</a></td>
 </tr>
-<tr data-sender="Kohei Takagi" data-genre="餃子" data-type="食べログ">
-  <td class="date">2025/12/31</td>
+<tr data-sender="Kohei Takagi" data-genre="餃子">
   <td><span class="tag sender kohei">K</span></td>
-  <td class="name-cell">來々軒</td>
+  <td class="name-cell">來々軒 - 木場</td>
   <td class="station-cell">木場駅</td>
   <td><span class="tag genre">餃子</span></td>
   <td class="link-cell"><a href="https://tabelog.com/tokyo/A1313/A131303/13098822/" target="_blank" rel="noopener">https://tabelog.com/tokyo/A1313/A131303/13098822/</a></td>
 </tr>
-<tr data-sender="AiriToumei" data-genre="餃子" data-type="食べログ">
-  <td class="date">2025/12/31</td>
+<tr data-sender="AiriToumei" data-genre="餃子">
   <td><span class="tag sender airi">A</span></td>
   <td class="name-cell">亀戸餃子 本店</td>
   <td class="station-cell">亀戸駅</td>
   <td><span class="tag genre">餃子</span></td>
   <td class="link-cell"><a href="https://s.tabelog.com/tokyo/A1312/A131202/13003078/" target="_blank" rel="noopener">https://s.tabelog.com/tokyo/A1312/A131202/13003078/</a></td>
 </tr>
-<tr data-sender="AiriToumei" data-genre="ラーメン" data-type="食べログ">
-  <td class="date">2025/12/31</td>
+<tr data-sender="AiriToumei" data-genre="ラーメン">
   <td><span class="tag sender airi">A</span></td>
-  <td class="name-cell">らーめん改</td>
+  <td class="name-cell">らーめん改 - 蔵前</td>
   <td class="station-cell">蔵前駅</td>
   <td><span class="tag genre">ラーメン</span></td>
   <td class="link-cell"><a href="https://s.tabelog.com/tokyo/A1311/A131103/13191776/" target="_blank" rel="noopener">https://s.tabelog.com/tokyo/A1311/A131103/13191776/</a></td>
 </tr>
-<tr data-sender="Kohei Takagi" data-genre="寿司" data-type="食べログ">
-  <td class="date">2025/12/31</td>
+<tr data-sender="Kohei Takagi" data-genre="寿司">
   <td><span class="tag sender kohei">K</span></td>
-  <td class="name-cell">北陸金沢回転寿司 のとめぐり</td>
+  <td class="name-cell">北陸金沢回転寿司 のとめぐり - 金沢</td>
   <td class="station-cell">金沢駅</td>
   <td><span class="tag genre">寿司</span></td>
   <td class="link-cell"><a href="https://tabelog.com/ishikawa/A1701/A170101/17012712/" target="_blank" rel="noopener">https://tabelog.com/ishikawa/A1701/A170101/17012712/</a></td>
 </tr>
-<tr data-sender="AiriToumei" data-genre="" data-type="地図共有">
-  <td class="date">2025/12/31</td>
+<tr data-sender="AiriToumei" data-genre="">
   <td><span class="tag sender airi">A</span></td>
   <td class="name-cell"></td>
   <td class="station-cell"></td>
   <td></td>
   <td class="link-cell"><a href="https://share.google/CWAKl60MIBH0NMZNK" target="_blank" rel="noopener">https://share.google/CWAKl60MIBH0NMZNK</a></td>
 </tr>
-<tr data-sender="AiriToumei" data-genre="タイ料理" data-type="食べログ">
-  <td class="date">2025/12/31</td>
+<tr data-sender="AiriToumei" data-genre="ラーメン">
   <td><span class="tag sender airi">A</span></td>
-  <td class="name-cell">アムリタ食堂</td>
-  <td class="station-cell">吉祥寺駅</td>
-  <td><span class="tag genre">タイ料理</span></td>
-  <td class="link-cell"><a href="https://s.tabelog.com/tokyo/A1320/A132001/13005829/" target="_blank" rel="noopener">https://s.tabelog.com/tokyo/A1320/A132001/13005829/</a></td>
-</tr>
-<tr data-sender="AiriToumei" data-genre="ラーメン" data-type="食べログ">
-  <td class="date">2025/12/31</td>
-  <td><span class="tag sender airi">A</span></td>
-  <td class="name-cell">麺屋大河</td>
+  <td class="name-cell">麺屋大河 - 北鉄金沢</td>
   <td class="station-cell">北鉄金沢駅</td>
   <td><span class="tag genre">ラーメン</span></td>
   <td class="link-cell"><a href="https://s.tabelog.com/ishikawa/A1701/A170101/17007507/" target="_blank" rel="noopener">https://s.tabelog.com/ishikawa/A1701/A170101/1700750…</a></td>
 </tr>
-<tr data-sender="AiriToumei" data-genre="" data-type="Googleマップ">
-  <td class="date">2025/12/31</td>
+<tr data-sender="AiriToumei" data-genre="">
   <td><span class="tag sender airi">A</span></td>
   <td class="name-cell"></td>
   <td class="station-cell"></td>
   <td></td>
   <td class="link-cell"><a href="https://maps.app.goo.gl/Dq3WNJVX6wNF8jKN7" target="_blank" rel="noopener">https://maps.app.goo.gl/Dq3WNJVX6wNF8jKN7</a></td>
 </tr>
-<tr data-sender="AiriToumei" data-genre="タイ料理" data-type="食べログ">
-  <td class="date">2025/12/31</td>
+<tr data-sender="AiriToumei" data-genre="タイ料理">
   <td><span class="tag sender airi">A</span></td>
-  <td class="name-cell">タイ料理 コンロウ 恵比寿のご予約</td>
+  <td class="name-cell">タイ料理 コンロウ 恵比寿のご予約 - 恵比寿</td>
   <td class="station-cell">恵比寿駅</td>
   <td><span class="tag genre">タイ料理</span></td>
   <td class="link-cell"><a href="https://s.tabelog.com/tokyo/A1303/A130302/13233894/" target="_blank" rel="noopener">https://s.tabelog.com/tokyo/A1303/A130302/13233894/</a></td>
 </tr>
-<tr data-sender="AiriToumei" data-genre="居酒屋" data-type="食べログ">
-  <td class="date">2025/12/31</td>
+<tr data-sender="AiriToumei" data-genre="居酒屋">
   <td><span class="tag sender airi">A</span></td>
   <td class="name-cell">たべごと屋のらぼう</td>
   <td class="station-cell">西荻窪駅</td>
   <td><span class="tag genre">居酒屋</span></td>
   <td class="link-cell"><a href="https://s.tabelog.com/tokyo/A1319/A131907/13001122/" target="_blank" rel="noopener">https://s.tabelog.com/tokyo/A1319/A131907/13001122/</a></td>
 </tr>
-<tr data-sender="Kohei Takagi" data-genre="居酒屋" data-type="食べログ">
-  <td class="date">2025/12/31</td>
+<tr data-sender="Kohei Takagi" data-genre="居酒屋">
   <td><span class="tag sender kohei">K</span></td>
   <td class="name-cell">吟魚</td>
   <td class="station-cell">新富町駅</td>
   <td><span class="tag genre">居酒屋</span></td>
   <td class="link-cell"><a href="https://tabelog.com/toyama/A1601/A160101/16007011/" target="_blank" rel="noopener">https://tabelog.com/toyama/A1601/A160101/16007011/</a></td>
 </tr>
-<tr data-sender="AiriToumei" data-genre="居酒屋" data-type="食べログ">
-  <td class="date">2025/12/31</td>
+<tr data-sender="AiriToumei" data-genre="居酒屋">
   <td><span class="tag sender airi">A</span></td>
   <td class="name-cell">ぎんぎょ伍式</td>
   <td class="station-cell">新富町駅</td>
   <td><span class="tag genre">居酒屋</span></td>
   <td class="link-cell"><a href="https://s.tabelog.com/toyama/A1601/A160101/16010653/" target="_blank" rel="noopener">https://s.tabelog.com/toyama/A1601/A160101/16010653/</a></td>
 </tr>
-<tr data-sender="AiriToumei" data-genre="寿司" data-type="食べログ">
-  <td class="date">2025/12/31</td>
+<tr data-sender="AiriToumei" data-genre="寿司">
   <td><span class="tag sender airi">A</span></td>
   <td class="name-cell">寿司栄 総曲輪店</td>
   <td class="station-cell">グランドプラザ前駅</td>
   <td><span class="tag genre">寿司</span></td>
   <td class="link-cell"><a href="https://tabelog.com/toyama/A1601/A160101/16000028/" target="_blank" rel="noopener">https://tabelog.com/toyama/A1601/A160101/16000028/</a></td>
 </tr>
-<tr data-sender="AiriToumei" data-genre="寿司" data-type="食べログ">
-  <td class="date">2025/12/31</td>
+<tr data-sender="AiriToumei" data-genre="寿司">
   <td><span class="tag sender airi">A</span></td>
   <td class="name-cell">幅一</td>
   <td class="station-cell">グランドプラザ前駅</td>
   <td><span class="tag genre">寿司</span></td>
   <td class="link-cell"><a href="https://s.tabelog.com/toyama/A1601/A160101/16006948/" target="_blank" rel="noopener">https://s.tabelog.com/toyama/A1601/A160101/16006948/</a></td>
 </tr>
-<tr data-sender="AiriToumei" data-genre="寿司" data-type="食べログ">
-  <td class="date">2025/12/31</td>
+<tr data-sender="AiriToumei" data-genre="寿司">
   <td><span class="tag sender airi">A</span></td>
-  <td class="name-cell">廻る富山湾 すし玉 富山駅店</td>
+  <td class="name-cell">廻る富山湾 すし玉 富山駅店 - 電鉄富山</td>
   <td class="station-cell">電鉄富山駅</td>
   <td><span class="tag genre">寿司</span></td>
   <td class="link-cell"><a href="https://s.tabelog.com/toyama/A1601/A160101/16007295/" target="_blank" rel="noopener">https://s.tabelog.com/toyama/A1601/A160101/16007295/</a></td>
 </tr>
-<tr data-sender="AiriToumei" data-genre="" data-type="地図共有">
-  <td class="date">2025/12/31</td>
+<tr data-sender="AiriToumei" data-genre="">
   <td><span class="tag sender airi">A</span></td>
   <td class="name-cell"></td>
   <td class="station-cell"></td>
   <td></td>
   <td class="link-cell"><a href="https://share.google/C02I62pyfH3pMNEJF" target="_blank" rel="noopener">https://share.google/C02I62pyfH3pMNEJF</a></td>
 </tr>
-<tr data-sender="AiriToumei" data-genre="" data-type="地図共有">
-  <td class="date">2025/12/31</td>
+<tr data-sender="AiriToumei" data-genre="">
   <td><span class="tag sender airi">A</span></td>
   <td class="name-cell"></td>
   <td class="station-cell"></td>
@@ -1538,7 +1220,6 @@
       </tbody>
     </table>
   </div>
-
   <script>
     const rows = document.querySelectorAll('#mainTable tbody tr');
     const countEl = document.getElementById('count');
@@ -1548,17 +1229,17 @@
       const q      = document.getElementById('search').value.toLowerCase();
       let visible  = 0;
       rows.forEach(tr => {
-        const ms = !sender || tr.dataset.sender === sender;
-        const mg = !genre  || tr.dataset.genre  === genre;
-        const mq = !q      || tr.textContent.toLowerCase().includes(q);
-        const show = ms && mg && mq;
+        const show = (!sender || tr.dataset.sender === sender)
+                  && (!genre  || tr.dataset.genre  === genre)
+                  && (!q      || tr.textContent.toLowerCase().includes(q));
         tr.classList.toggle('hidden', !show);
         if (show) visible++;
       });
       countEl.textContent = visible + ' 件';
     }
     ['filterSender','filterGenre','search'].forEach(id =>
-      document.getElementById(id).addEventListener(id === 'search' ? 'input' : 'change', applyFilters)
+      document.getElementById(id).addEventListener(
+        id === 'search' ? 'input' : 'change', applyFilters)
     );
   </script>
 </body>
